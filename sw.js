@@ -16,6 +16,7 @@ const PRECACHE_LIST = [
   "./css/bootstrap.min.css.map",
   "./css/font.min.css",
   "./css/snakebar.css",
+  "./css/aboutpage.css",
   "./img/",
 ]
 const HOSTNAME_WHITELIST = [

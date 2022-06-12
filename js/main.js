@@ -12,7 +12,7 @@ $(document).ready(function() {
         e.stopPropagation();
         var activeLi = $(this);
         var scrollTo = $(this).data().id.startsWith('group_') ? $('#'+$(this).data().id).offset().top : 0;
-        $body.animate({scrollTop: scrollTo}, 500, "linear", function(){
+        $body.animate({scrollTop: scrollTo}, 500, "swing", function(){
             $('#showListType li').removeClass('active');
             activeLi.addClass('active');
         });
@@ -57,4 +57,31 @@ $(document).ready(function() {
         'Stay Hungry, Stay Foolish.'
     ];
     $('#js-lg').text(pArr[Math.floor((Math.random()*pArr.length))]);
+    
+    //about page
+    $(".js-popup").on("click", function(){
+        var clickEleHeight = $(this).offset().top < $(window).height() ? 0 : $(this).offset().top;
+        $body.animate({scrollTop: 0}, 0, "swing", function(){
+            $(".pop").slideDown(500, "swing", function(){
+                $("#nav-page").hide();
+                $('body').css('background-color','white');
+                $('.close').attr('data-height', clickEleHeight);
+                $('.close').data().height = clickEleHeight;
+                $(".close").css('position', 'fixed');
+            });
+        });
+    })
+    $(".close").on("click", function(){
+        var dataHeight = $(this).data().height;
+        $(this).removeAttr('style');
+        $body.animate({scrollTop: 0}, 50, "swing", function(){
+            $('body').css('background-color','');
+            $("#nav-page").show();
+            $(".pop").slideUp(500, "swing", function(){ 
+                if(dataHeight){
+                    $body.animate({scrollTop: dataHeight}, 500);
+                }
+            });
+        });
+    })
 })
