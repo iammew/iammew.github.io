@@ -11,7 +11,8 @@ $(document).ready(function() {
     $('#showListType li').click(function(e) {
         e.stopPropagation();
         var activeLi = $(this);
-        $body.animate({scrollTop: $('#'+$(this).data().id).offset().top}, 500, "linear", function(){
+        var scrollTo = $(this).data().id.startsWith('group_') ? $('#'+$(this).data().id).offset().top : 0;
+        $body.animate({scrollTop: scrollTo}, 500, "linear", function(){
             $('#showListType li').removeClass('active');
             activeLi.addClass('active');
         });
@@ -21,10 +22,10 @@ $(document).ready(function() {
         $('#showListType').removeClass('showListType');
     })
     $(document).scroll(function() {
-        var scroH = $(document).scrollTop();
+        var scroH = $(window).scrollTop();
         var listLength = listHeightArr.length;
         var index = listLength-1;//原本的index
-        while(listHeightArr[index] > scroH) {
+        while(listHeightArr[index] - scroH > 1 ) {
             listHeightArr[index + 1] = listHeightArr[index];
             index--;
         }
