@@ -359,3 +359,20 @@ span.mobile-d_none, svg.pad-d_none{display:inline;}
 ::-webkit-scrollbar-corner {
     background: #ddd;
 }
+
+@media screen and (max-height:767px){
+	.change-type .type-left ul li {
+		line-height: 35px;
+		height: 35px;
+	}
+}
+
+@media screen and (max-height:600px){
+	.change-type .type-left ul li {
+		line-height: 20px;
+		height: 20px;
+	}
+	.change-type .type-left ul li a {
+		font-size: 10px;
+	}
+}
