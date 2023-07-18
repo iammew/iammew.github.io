@@ -49,7 +49,7 @@ $(document).ready(function() {
     var countdownDay = parseInt((countdownEndTime.getTime() - now.getTime()) / (60*60*24*1000));
     if (countdownDay >= 0) {
         var countdownForText = '软考';
-        $('#js-countdown').text('距离' + countdownForText + '还剩 '+ countdownDay + ' 天');
+        $('#js-countdown').html('距离' + countdownForText + '还剩 <a style="font-size:1.6em;font-weight:700">'+ countdownDay + '</a> 天');
     }
     // set words
     var pArr = ['到了熟透的年龄，即使在群众的怀抱中，你都可能觉得寂寞无比。', 
