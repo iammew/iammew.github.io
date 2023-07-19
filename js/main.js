@@ -14,12 +14,6 @@ $(document).ready(function() {
                     ahref: 'https://mail.qq.com/',
                     xlinkhref: '#icon-qqmail',
                     span: 'QQ邮箱',
-                    weight: 9995
-                },{
-                    id: 'rm-alipay',
-                    ahref: 'https://business.alipay.com/user/home',
-                    xlinkhref: '#icon-alipay',
-                    span: '支付宝商家中心',
                     weight: 9996
                 },{
                     id: 'rm-zhihu',
@@ -48,6 +42,12 @@ $(document).ready(function() {
         admin:{
             favorite: [
                 {
+                    id: 'rm-qqmail',
+                    ahref: 'https://m.lizhiweike.com/channel2/1413360',
+                    xlinkhref: '#icon-learn',
+                    span: '荔枝微课',
+                    weight: -1
+                },{
                     id: 'rm-outlook',
                     ahref: 'https://outlook.live.com/mail/',
                     xlinkhref: '#icon-outlook',
