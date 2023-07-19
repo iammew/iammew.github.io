@@ -35,14 +35,14 @@ $(document).ready(function() {
                     weight: 9999
                 }
             ],
-            dontlike: ['rm-lizhiweike','rm-chatgpt','rm-tieba','rm-github','rm-musicca','rm-huya','rm-douyu'],
+            dontlike: ['rm-chatgpt','rm-tieba','rm-github','rm-musicca','rm-huya','rm-douyu'],
             countdownForText: '自由',
             countdownEndTime: '2023-09-02 23:59:59',
         },
         admin:{
             favorite: [
                 {
-                    id: 'rm-qqmail',
+                    id: 'rm-lizhi',
                     ahref: 'https://m.lizhiweike.com/channel2/1413360',
                     xlinkhref: '#icon-learn',
                     span: '荔枝微课',
