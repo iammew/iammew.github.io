@@ -1,12 +1,73 @@
 $(document).ready(function() {
+    var liTemplate = '<li id="" data-weight="" class="col-3 col-sm-3 col-md-3 col-lg-1 __web-inspector-hide-shortcut__"><a rel="nofollow" href="" target="_blank"><svg class="icon" aria-hidden="true"><use xlink:href=""></use></svg><span></span></a></li>'
     var userJson = {
         dewu:{
-            favorite: ['<li class="col-3 col-sm-3 col-md-3 col-lg-1 __web-inspector-hide-shortcut__"><a rel="nofollow" href="https://www.jjwxc.net/fenzhan/yq/" target="_blank"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-jinjiang"></use></svg><span>晋江文学城</span></a></li>'],
+            favorite: [
+                {
+                    id: 'rm-ps',
+                    ahref: 'https://www.uupoop.com/#/old',
+                    xlinkhref: '#icon-ps',
+                    span: '在线PS(国内)',
+                    weight: -1
+                },{
+                    id: 'rm-qqmail',
+                    ahref: 'https://mail.qq.com/',
+                    xlinkhref: '#icon-qqmail',
+                    span: 'QQ邮箱',
+                    weight: 9995
+                },{
+                    id: 'rm-alipay',
+                    ahref: 'https://business.alipay.com/user/home',
+                    xlinkhref: '#icon-alipay',
+                    span: '支付宝商家中心',
+                    weight: 9996
+                },{
+                    id: 'rm-zhihu',
+                    ahref: 'https://www.zhihu.com/explore',
+                    xlinkhref: '#icon-zhihu',
+                    span: '知乎',
+                    weight: 9997
+                },{
+                    id: 'rm-weibo',
+                    ahref: 'https://www.weibo.com',
+                    xlinkhref: '#icon-weibo',
+                    span: '微博',
+                    weight: 9998
+                },{
+                    id: 'rm-jinjiang',
+                    ahref: 'https://www.jjwxc.net/fenzhan/yq/',
+                    xlinkhref: '#icon-jinjiang',
+                    span: '晋江文学城',
+                    weight: 9999
+                }
+            ],
+            dontlike: ['rm-lizhiweike','rm-chatgpt','rm-tieba','rm-github','rm-musicca','rm-huya','rm-douyu'],
             countdownForText: '自由',
             countdownEndTime: '2023-09-02 23:59:59',
         },
         admin:{
-            favorite: [],
+            favorite: [
+                {
+                    id: 'rm-outlook',
+                    ahref: 'https://outlook.live.com/mail/',
+                    xlinkhref: '#icon-outlook',
+                    span: 'Outlook',
+                    weight: 9997
+                },{
+                    id: 'rm-wangyimail',
+                    ahref: 'https://mail.163.com/',
+                    xlinkhref: '#icon-wangyi',
+                    span: '网易邮箱',
+                    weight: 9998
+                },{
+                    id: 'rm-qqmail',
+                    ahref: 'https://mail.qq.com/',
+                    xlinkhref: '#icon-qqmail',
+                    span: 'QQ邮箱',
+                    weight: 9999
+                }
+            ],
+            dontlike: ['rm-kuaishou'],
             countdownForText: '软考',
             countdownEndTime: '2023-11-04 23:59:59',
         }
@@ -19,9 +80,26 @@ $(document).ready(function() {
     var user = getUrlParam("user") ? getUrlParam("user") : 'admin';
     var userJsonvValue = userJson[user];
     var userfavoriteList = userJsonvValue.favorite;
+    var userdontlikeList = userJsonvValue.dontlike;
     if(userfavoriteList && userfavoriteList.length>0){
-        $.each(userfavoriteList, function(){     
-            $('#js_li-remen').after(this);
+        $.each(userfavoriteList, function(){
+            var rmfavoriteLi = $('#group_1').find('#'+this.id);
+            if(rmfavoriteLi.length>0){
+                rmfavoriteLi.remove();
+            }
+            if(this.weight>0){
+                $('#js_li-remen').after(liTemplate.replace('li id="','li id="'+this.id).replace('href="','href="'+this.ahref).replace('data-weight="','data-weight="'+this.weight).replace('xlink:href="','xlink:href="'+this.xlinkhref).replace('<span>','<span>'+this.span));
+            }else{
+                $('#group_1').append(liTemplate.replace('li id="','li id="'+this.id).replace('href="','href="'+this.ahref).replace('data-weight="','data-weight="'+this.weight).replace('xlink:href="','xlink:href="'+this.xlinkhref).replace('<span>','<span>'+this.span));
+            }
+        });
+    }
+    if(userdontlikeList && userdontlikeList.length>0){
+        $.each(userdontlikeList, function(){
+            var rmdontlikeLi = $('#group_1').find('#'+this);
+            if(rmdontlikeLi.length>0){
+                rmdontlikeLi.remove();
+            }
         });
     }
     $body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');
