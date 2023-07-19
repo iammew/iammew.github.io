@@ -2,7 +2,7 @@ $(document).ready(function() {
     var userJson = {
         dewu:{
             favorite: ['<li class="col-3 col-sm-3 col-md-3 col-lg-1 __web-inspector-hide-shortcut__"><a rel="nofollow" href="https://www.jjwxc.net/fenzhan/yq/" target="_blank"><svg class="icon" aria-hidden="true"><use xlink:href="#icon-jinjiang"></use></svg><span>晋江文学城</span></a></li>'],
-            countdownForText: '离职',
+            countdownForText: '自由',
             countdownEndTime: '2023-09-02 23:59:59',
         },
         admin:{
