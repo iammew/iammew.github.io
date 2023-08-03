@@ -70,6 +70,7 @@ $(document).ready(function() {
             dontlike: ['rm-kuaishou'],
             countdownForText: '软考',
             countdownEndTime: '2023-11-04 23:59:59',
+            ifram: 'https://zjkjxj.org.cn/zjrjks.jhtml'
         }
     };
     function getUrlParam(name) {
@@ -151,6 +152,37 @@ $(document).ready(function() {
     var countdownDay = parseInt((new Date(userJsonvValue.countdownEndTime).getTime() - now.getTime()) / (60*60*24*1000));
     if (countdownDay >= 0) {
         $('#js-countdown').html('距离' + userJsonvValue.countdownForText + '还剩 <a style="font-size:1.6em;font-weight:700">'+ countdownDay + '</a> 天');
+
+        if(userJsonvValue.ifram){
+            $('#noticeBtn').show();
+            $('#noticeBtn').css('top', parseInt($('#noticeBtn').css('top'))+46+'px');
+            $('#noticeBtn').on('click', function(e){
+                e.stopPropagation();
+                $('#notice').toggle();
+            })
+            $('#notice').hide();
+            $.get(userJsonvValue.ifram, function(data){
+                var datamodify = data.replaceAll('src="/','src1="/');
+                $('#notice').append($(datamodify).find('.exam-notice .list')).append($(datamodify).find('.exam-date .swiper-wrapper'));
+                $('#notice .swiper-wrapper').css('padding-left','46px');
+                $('#notice .swiper-slide').css('margin-bottom','46px');
+                var is7daysnews = parseInt((now.getTime() - (new Date($('#notice .list ul').find('li:first-child').find('span').html()).getTime())) / (60*60*24*1000))<8;
+                var is2023second = false;
+                $.each($('#notice').find('.swiper-wrapper').find('.lot-top'), function(index, value) {
+                    if($(value).html().split('2023年下半年').length > 1){
+                        $(value).css('font-weight', '700');
+                        $(value).nextAll().css('font-weight', '700');
+                        is2023second = true;
+                    }else{
+                        $(value).css('font-weight', '300');
+                        $(value).nextAll().css('font-weight', '300');
+                    }
+                })
+                if(is7daysnews || is2023second){
+                    $('#notice').show();
+                }
+            });
+        }
     }
     // set words
     var pArr = ['到了熟透的年龄，即使在群众的怀抱中，你都可能觉得寂寞无比。', 
