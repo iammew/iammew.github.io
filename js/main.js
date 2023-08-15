@@ -69,8 +69,8 @@ $(document).ready(function() {
             ],
             dontlike: ['rm-kuaishou'],
             countdownForText: '软考',
-            countdownEndTime: '2023-11-04 23:59:59',
-            ifram: 'https://zjkjxj.org.cn/zjrjks.jhtml'
+            countdownEndTime: '2023-11-04 23:59:59'
+            // ifram: 'https://zjkjxj.org.cn/zjrjks.jhtml'
         }
     };
     function getUrlParam(name) {
