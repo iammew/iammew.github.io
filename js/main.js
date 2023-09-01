@@ -68,7 +68,7 @@ $(document).ready(function() {
                 }
             ],
             dontlike: ['rm-kuaishou'],
-            countdownForText: '软考',
+            countdownForText: '<a class="countdownForText" href="https://www.ruankao.org.cn/">软考</a>',
             countdownEndTime: '2023-11-04 23:59:59'
             // ifram: 'https://zjkjxj.org.cn/zjrjks.jhtml'
         }
