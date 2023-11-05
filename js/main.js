@@ -71,6 +71,40 @@ $(document).ready(function() {
             countdownForText: '<a class="countdownForText" href="https://www.ruankao.org.cn/">软考</a>',
             countdownEndTime: '2024-11-04 23:59:59'
             // ifram: 'https://zjkjxj.org.cn/zjrjks.jhtml'
+        },
+        default:{
+            favorite: [
+                {
+                    id: 'rm-lizhi',
+                    ahref: 'https://m.lizhiweike.com/channel2/1413360',
+                    xlinkhref: '#icon-learn',
+                    span: '荔枝微课',
+                    weight: -1
+                },{
+                    id: 'rm-outlook',
+                    ahref: 'https://outlook.live.com/mail/',
+                    xlinkhref: '#icon-outlook',
+                    span: 'Outlook',
+                    weight: 9997
+                },{
+                    id: 'rm-wangyimail',
+                    ahref: 'https://mail.163.com/',
+                    xlinkhref: '#icon-wangyi',
+                    span: '网易邮箱',
+                    weight: 9998
+                },{
+                    id: 'rm-qqmail',
+                    ahref: 'https://mail.qq.com/',
+                    xlinkhref: '#icon-qqmail',
+                    span: 'QQ邮箱',
+                    weight: 9999
+                }
+            ],
+            dontlike: ['rm-kuaishou'],
+            countdownForText: '<a class="countdownForText" href="https://www.ruankao.org.cn/">软考</a>',
+            countdownEndTime: '2024-11-04 23:59:59',
+            countdownStartTime: '2024-09-04 23:59:59'
+            // ifram: 'https://zjkjxj.org.cn/zjrjks.jhtml'
         }
     };
     function getUrlParam(name) {
@@ -78,7 +112,7 @@ $(document).ready(function() {
         var r = window.location.search.substr(1).match(reg); 
         if (r != null) return unescape(r[2]); return null; 
     }
-    var user = getUrlParam("user") ? getUrlParam("user") : 'admin';
+    var user = getUrlParam("user") ? getUrlParam("user") : 'default';
     var userJsonvValue = userJson[user];
     var userfavoriteList = userJsonvValue.favorite;
     var userdontlikeList = userJsonvValue.dontlike;
@@ -149,9 +183,13 @@ $(document).ready(function() {
     $('#banner-bg').attr('src', bgArr[now.getDay()]);
 
     // set countdown
-    var countdownDay = parseInt((new Date(userJsonvValue.countdownEndTime).getTime() - now.getTime()) / (60*60*24*1000));
-    if (countdownDay > 0) {
-        $('#js-countdown').html('距离' + userJsonvValue.countdownForText + '还剩 <a style="font-size:1.6em;font-weight:700">'+ countdownDay + '</a> 天');
+    var countdownStartDay = 0;
+    if(userJsonvValue.countdownStartTime){
+        countdownStartDay = parseInt((new Date(userJsonvValue.countdownStartTime).getTime() - now.getTime()) / (60*60*24*1000));
+    }
+    var countdownEndDay = parseInt((new Date(userJsonvValue.countdownEndTime).getTime() - now.getTime()) / (60*60*24*1000));
+    if (countdownStartDay < 1 && countdownEndDay > 0) {
+        $('#js-countdown').html('距离' + userJsonvValue.countdownForText + '还剩 <a style="font-size:1.6em;font-weight:700">'+ countdownEndDay + '</a> 天');
 
         if(userJsonvValue.ifram){
             $('#noticeBtn').show();
