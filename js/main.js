@@ -69,7 +69,7 @@ $(document).ready(function() {
             ],
             dontlike: ['rm-kuaishou'],
             countdownForText: '<a class="countdownForText" href="https://www.ruankao.org.cn/">软考</a>',
-            countdownEndTime: '2023-11-04 23:59:59'
+            countdownEndTime: '2024-11-04 23:59:59'
             // ifram: 'https://zjkjxj.org.cn/zjrjks.jhtml'
         }
     };
@@ -150,7 +150,7 @@ $(document).ready(function() {
 
     // set countdown
     var countdownDay = parseInt((new Date(userJsonvValue.countdownEndTime).getTime() - now.getTime()) / (60*60*24*1000));
-    if (countdownDay >= 0) {
+    if (countdownDay > 0) {
         $('#js-countdown').html('距离' + userJsonvValue.countdownForText + '还剩 <a style="font-size:1.6em;font-weight:700">'+ countdownDay + '</a> 天');
 
         if(userJsonvValue.ifram){
