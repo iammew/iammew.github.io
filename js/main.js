@@ -105,7 +105,7 @@ $(document).ready(function() {
             countdownForText: '<a class="countdownForText" href="https://www.ruankao.org.cn/">软考</a>',
             countdownEndTime: '2024-11-04 23:59:59',
             countdownStartTime: '2024-09-04 23:59:59',
-            l2d: 'https://unpkg.com/live2d-widget-model-shizuku@1.0.5/assets/shizuku.model.json'
+            l2d: 'https://unpkg.com/live2d-widget-model-koharu@1.0.5/assets/koharu.model.json'
             // ifram: 'https://zjkjxj.org.cn/zjrjks.jhtml'
         }
     };
