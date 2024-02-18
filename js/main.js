@@ -38,7 +38,10 @@ $(document).ready(function() {
             dontlike: ['rm-chatgpt','rm-tieba','rm-github','rm-musicca','rm-huya','rm-douyu'],
             countdownForText: '自由',
             countdownEndTime: '2023-09-02 23:59:59',
-            l2d: 'https://unpkg.com/live2d-widget-model-haruto@1.0.5/assets/haruto.model.json'
+            l2d: { 
+                model: 'https://unpkg.com/live2d-widget-model-haruto@1.0.5/assets/haruto.model.json',
+                position: 'right'
+            }
         },
         admin:{
             favorite: [
@@ -105,7 +108,10 @@ $(document).ready(function() {
             countdownForText: '<a class="countdownForText" href="https://www.ruankao.org.cn/">软考</a>',
             countdownEndTime: '2024-11-04 23:59:59',
             countdownStartTime: '2024-09-04 23:59:59',
-            l2d: 'https://unpkg.com/live2d-widget-model-koharu@1.0.5/assets/koharu.model.json'
+            l2d: { 
+                model: 'https://unpkg.com/live2d-widget-model-koharu@1.0.5/assets/koharu.model.json',
+                position: 'left'
+            }
             // ifram: 'https://zjkjxj.org.cn/zjrjks.jhtml'
         }
     };
@@ -139,28 +145,32 @@ $(document).ready(function() {
             }
         });
     }
-    L2Dwidget
-    .on('*', (name) => {
-      // console.log('%c EVENT ' + '%c -> ' + name, 'background: #222; color: yellow', 'background: #fff; color: #000')
-    })
-    .init({
-        dialog: {
-        // 开启对话框
-            enable: true,
-            script: {
-                //每20s，显示一言（调用一言Api返回的句子）
-                //'every idle 20s': '$hitokoto$',
-                //触摸到class='star'对象
-                'hover .star': '星星在天上而你在我心里 (*/ω＼*)',
-                //触摸到身体
-                'tap body': '静静地想你',
-                //触摸到头部
-                'tap face': '嘻'
+    if(userJsonvValue.l2d){
+        L2Dwidget
+        .on('*', (name) => {
+          // console.log('%c EVENT ' + '%c -> ' + name, 'background: #222; color: yellow', 'background: #fff; color: #000')
+        })
+        .init({
+            dialog: {
+            // 开启对话框
+                enable: true,
+                script: {
+                    //每20s，显示一言（调用一言Api返回的句子）
+                    //'every idle 20s': '$hitokoto$',
+                    //触摸到class='star'对象
+                    'hover .star': '星星在天上而你在我心里 (*/ω＼*)',
+                    //触摸到身体
+                    'tap body': '静静地想你',
+                    //触摸到头部
+                    'tap face': '嘻'
+                },
+                "mobile":{"show":true}
             },
-            "mobile":{"show":true}
-        },
-        "model":{"jsonPath":userJsonvValue.l2d}
-    });
+            "model":{"jsonPath":userJsonvValue.l2d.model},
+            "display": {"position": userJsonvValue.l2d.position}
+        });
+    }
+    
     $body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');
     var listHeightArr = [];
     $('#showListType li').each(function(){
