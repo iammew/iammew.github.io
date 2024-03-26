@@ -36,8 +36,8 @@ $(document).ready(function() {
                 }
             ],
             dontlike: ['rm-chatgpt','rm-tieba','rm-github','rm-musicca','rm-huya','rm-douyu'],
-            countdownForText: '自由',
-            countdownEndTime: '2023-09-02 23:59:59',
+            countdownForText: '<a class="countdownForText" href="https://love.mew.wang/Web/disguise_Baidu/">野猫停止爱你</a>',
+            countdownEndTime: '2100-08-01 23:59:59',
             l2d: { 
                 model: 'https://unpkg.com/live2d-widget-model-haruto@1.0.5/assets/haruto.model.json',
                 position: 'right'
@@ -106,8 +106,8 @@ $(document).ready(function() {
             ],
             dontlike: ['rm-kuaishou'],
             countdownForText: '<a class="countdownForText" href="https://www.ruankao.org.cn/">软考</a>',
-            countdownEndTime: '2024-11-04 23:59:59',
-            countdownStartTime: '2024-09-04 23:59:59',
+            countdownEndTime: '2024-05-25 23:59:59',
+            // countdownStartTime: '2024-09-04 23:59:59',
             l2d: { 
                 model: 'https://unpkg.com/live2d-widget-model-koharu@1.0.5/assets/koharu.model.json',
                 position: 'left'
