@@ -36,7 +36,7 @@ $(document).ready(function() {
                 }
             ],
             dontlike: ['rm-chatgpt','rm-tieba','rm-github','rm-musicca','rm-huya','rm-douyu'],
-            countdownForText: '<a class="countdownForText" href="https://love.mew.wang/Web/disguise_Baidu/">野猫停止爱你</a>',
+            countdownForText: '<a class="countdownForText" style="font-size:1.2em;font-weight:700;" href="https://love.mew.wang/Web/disguise_Baidu/">野猫停止爱你</a>',
             countdownEndTime: '2100-08-01 23:59:59',
             l2d: { 
                 model: 'https://unpkg.com/live2d-widget-model-haruto@1.0.5/assets/haruto.model.json',
