@@ -41,7 +41,8 @@ $(document).ready(function() {
             l2d: { 
                 model: 'https://unpkg.com/live2d-widget-model-haruto@1.0.5/assets/haruto.model.json',
                 position: 'right'
-            }
+            },
+            class:'dewu'
         },
         admin:{
             favorite: [
@@ -216,6 +217,25 @@ $(document).ready(function() {
     var bgArr = ['img/bg0.jpg', 'img/bg1.jpg', 'img/bg2.jpg', 'img/bg0.jpg', 'img/bg1.jpg', 'img/bg2.jpg', 'img/bg0.jpg'];
     $('#banner-bg').attr('src', bgArr[now.getDay()]);
 
+    // set class
+    if(userJsonvValue.class){
+        $('.mode-switch__circle').addClass(userJsonvValue.class);
+        $('.mode-switch__toggle').on('click', function(e){
+            location.href = location.href.replace('index.html?user='+user, '')
+        })
+    } else if(getUrlParam("user")){
+        $('.mode-switch__toggle').on('click', function(e){
+            location.href = location.href.replace('index.html?user='+user, 'index.html?user=dewu')
+        })
+    } else {
+        $('.mode-switch__toggle').on('click', function(e){
+            if(location.href.indexOf('index.html')>0){
+                location.href = location.href.replace('index.html', 'index.html?user=dewu')
+            }else{
+                location.href = location.href+'index.html?user=dewu';
+            }
+        })
+    }
     // set countdown
     var countdownStartDay = 0;
     if(userJsonvValue.countdownStartTime){
