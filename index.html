@@ -142,7 +142,7 @@
                         display: flex;
                         align-items: center;
                         /* 假设你在header上面使用的是flex，
-                        margin-left: auto可以将切换按钮置于header最右侧 
+                            margin-left: auto可以将切换按钮置于header最右侧 
                         margin-left: auto; */
                         gap: 5px;
                     }
@@ -159,13 +159,9 @@
                         border-radius: 100px;
                         cursor: pointer;
                         position: relative;
-                        
-
                         .mode-tooltip__content{
-                            
                             display:none;
                         }
-
                     }
 
                     .mode-switch__circle {
@@ -175,14 +171,21 @@
                         background-color: #fff;
                         transition: transform 0.3s ease;
                         /* pointer-events: none这里是让圆圈不接收鼠标点击事件，
-                        上面的toggle接收就可以了 */
+                            上面的toggle接收就可以了 */
                         pointer-events: none;
+                    }
+                    .mode-switch__circle.dewu {
+                        margin-left:35px;
                     }
 
                     /* 可以暂时使用hover来测试circle这个圆圈的transition效果 */
                     .mode-switch__toggle:hover .mode-switch__circle {
                         /* 70px - 10px(左右padding) - 25px = 35px */
                         transform: translateX(35px);
+                    }
+                    .mode-switch__toggle:hover .mode-switch__circle.dewu {
+                        /* 70px - 10px(左右padding) - 25px = 35px */
+                        transform: translateX(-35px);
                     }
                     .mode-switch__toggle:hover .mode-tooltip__content {
                         display: block;
