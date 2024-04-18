@@ -426,8 +426,12 @@ svg.mobile-d_none, span.pad-d_none{display:inline;}
 .mode-switch__toggle:hover .mode-tooltip__content {
 	@media (min-width: 640px) { 
 	    display: block;
-	    background-color: white;
+	    background-color: #fff;
 	    border-radius: 10px;
 	    position: absolute;
+	}
+	@media (max-width: 640px) { 
+	    display: none !important;
+	    background-color: #fff  !important;
 	}
 }
