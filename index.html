@@ -123,10 +123,72 @@
                         <a class="nav-link js-popup">关于本站</a>
                     </li>
                 </ul>
+                <div class="mode-switch">
+                    <!-- 主站emoji -->
+                    <span>主站 </span>
+                    <div class="mode-switch__toggle">
+                      <div class="mode-switch__circle"></div>
+                      <div class="mode-tooltip__content">点击跳转</div>
+                    </div>
+                    <!-- 切换emoji -->
+                    <span>得物 </span>
+                  </div>
                 <style>
                     #he-plugin-simple {
                         z-index: 1000;
                         max-width:300px;
+                    }
+                    .mode-switch {
+                        display: flex;
+                        align-items: center;
+                        /* 假设你在header上面使用的是flex，
+                        margin-left: auto可以将切换按钮置于header最右侧 
+                        margin-left: auto; */
+                        gap: 5px;
+                    }
+
+                    span{
+                        color:white;
+                    }
+
+                    .mode-switch__toggle {
+                        background-color: purple;
+                        height: 100%;
+                        width: 60px;
+                        padding: 2px;
+                        border-radius: 100px;
+                        cursor: pointer;
+                        position: relative;
+                        
+
+                        .mode-tooltip__content{
+                            
+                            display:none;
+                        }
+
+                    }
+
+                    .mode-switch__circle {
+                        width: 25px;
+                        height: 25px;
+                        border-radius: 100px;
+                        background-color: #fff;
+                        transition: transform 0.3s ease;
+                        /* pointer-events: none这里是让圆圈不接收鼠标点击事件，
+                        上面的toggle接收就可以了 */
+                        pointer-events: none;
+                    }
+
+                    /* 可以暂时使用hover来测试circle这个圆圈的transition效果 */
+                    .mode-switch__toggle:hover .mode-switch__circle {
+                        /* 70px - 10px(左右padding) - 25px = 35px */
+                        transform: translateX(35px);
+                    }
+                    .mode-switch__toggle:hover .mode-tooltip__content {
+                        display: block;
+                        background-color: white;
+                        border-radius: 10px;
+                        position: absolute;
                     }
                 </style>
                 <div id="he-plugin-simple"></div>
