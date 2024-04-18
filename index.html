@@ -146,7 +146,7 @@
                         margin-left: auto; */
                         gap: 5px;
                         span{
-                            color:white;
+                            color:white !important;
                         }
                     }
 
@@ -187,10 +187,12 @@
                         transform: translateX(-35px);
                     }
                     .mode-switch__toggle:hover .mode-tooltip__content {
-                        display: block;
-                        background-color: white;
-                        border-radius: 10px;
-                        position: absolute;
+                        @media (min-width: 640px) { 
+                            display: block;
+                            background-color: white;
+                            border-radius: 10px;
+                            position: absolute;
+                        }
                     }
                 </style>
                 <div id="he-plugin-simple"></div>
