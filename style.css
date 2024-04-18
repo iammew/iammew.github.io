@@ -383,7 +383,7 @@ svg.mobile-d_none, span.pad-d_none{display:inline;}
 	margin-left: auto; */
 	gap: 5px;
 	span{
-	    color:white !important;
+	    color:#fff !important;
 	}
 }
 
