@@ -1,7 +1,7 @@
 $(document).ready(function() {
     var liTemplate = '<li id="" data-weight="" class="col-3 col-sm-3 col-md-3 col-lg-1 __web-inspector-hide-shortcut__"><a rel="nofollow" href="" target="_blank"><svg class="icon" aria-hidden="true"><use xlink:href=""></use></svg><span></span></a></li>'
     var userJson = {
-        dewu:{
+        mylover:{
             favorite: [
                 {
                     id: 'rm-ps',
@@ -42,7 +42,7 @@ $(document).ready(function() {
                 model: 'https://unpkg.com/live2d-widget-model-haruto@1.0.5/assets/haruto.model.json',
                 position: 'right'
             },
-            class:'dewu'
+            class:'lover'
         },
         admin:{
             favorite: [
@@ -225,14 +225,14 @@ $(document).ready(function() {
         })
     } else if(getUrlParam("user")){
         $('.mode-switch__toggle').on('click', function(e){
-            location.href = location.href.replace('index.html?user='+user, 'index.html?user=dewu')
+            location.href = location.href.replace('index.html?user='+user, 'index.html?user=mylover')
         })
     } else {
         $('.mode-switch__toggle').on('click', function(e){
             if(location.href.indexOf('index.html')>0){
-                location.href = location.href.replace('index.html', 'index.html?user=dewu')
+                location.href = location.href.replace('index.html', 'index.html?user=mylover')
             }else{
-                location.href = location.href+'index.html?user=dewu';
+                location.href = location.href+'index.html?user=mylover';
             }
         })
     }
