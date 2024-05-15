@@ -130,6 +130,15 @@
 	font-weight: 600
 }
 
+.markdown-section .markdown-default {
+	color: #2c3e50;
+	cursor: pointer;
+}
+
+.markdown-section .markdown-unchecked {
+	cursor: pointer;
+}
+
 .markdown-section h1 {
 	font-size: 2rem;
 	margin: 0 0 1rem

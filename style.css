@@ -1,4 +1,7 @@
 body{ font-size: 14px; background: #f4f8fb; overflow-x:hidden;  }
+d-none{
+	display: none;
+}
 .nav-item a {cursor: pointer;}
 h2.title{
     text-align: center;

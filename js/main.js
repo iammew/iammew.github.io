@@ -14,24 +14,30 @@ $(document).ready(function() {
                     ahref: 'https://mail.qq.com/',
                     xlinkhref: '#icon-qqmail',
                     span: 'QQ邮箱',
-                    weight: 9996
+                    weight: 9995
                 },{
                     id: 'rm-zhihu',
                     ahref: 'https://www.zhihu.com/explore',
                     xlinkhref: '#icon-zhihu',
                     span: '知乎',
-                    weight: 9997
+                    weight: 9996
                 },{
                     id: 'rm-weibo',
                     ahref: 'https://www.weibo.com',
                     xlinkhref: '#icon-weibo',
                     span: '微博',
-                    weight: 9998
+                    weight: 9997
                 },{
                     id: 'rm-jinjiang',
                     ahref: 'https://www.jjwxc.net/fenzhan/yq/',
                     xlinkhref: '#icon-jinjiang',
                     span: '晋江文学城',
+                    weight: 9998
+                },{
+                    id: 'rm-redbook',
+                    ahref: 'https://www.xiaohongshu.com/',
+                    xlinkhref: '#icon-redbook',
+                    span: '小红书',
                     weight: 9999
                 }
             ],
@@ -315,5 +321,13 @@ $(document).ready(function() {
                 }
             });
         });
+    })
+    $('#js-markdown_version').on("click", function(){
+        $('#main-about').addClass('d-none');
+        $('#main-version').removeClass('d-none');
+    })
+    $('#js-markdown_about').on("click", function(){
+        $('#main-about').removeClass('d-none');
+        $('#main-version').addClass('d-none');
     })
 })
