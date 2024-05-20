@@ -83,6 +83,55 @@ $(document).ready(function() {
             countdownEndTime: '2024-11-04 23:59:59'
             // ifram: 'https://zjkjxj.org.cn/zjrjks.jhtml'
         },
+        dewu:{
+            favorite: [
+                {
+                    id: 'rm-ps',
+                    ahref: 'https://www.uupoop.com/#/old',
+                    xlinkhref: '#icon-ps',
+                    span: '在线PS(国内)',
+                    weight: -1
+                },{
+                    id: 'rm-qqmail',
+                    ahref: 'https://mail.qq.com/',
+                    xlinkhref: '#icon-qqmail',
+                    span: 'QQ邮箱',
+                    weight: 9995
+                },{
+                    id: 'rm-zhihu',
+                    ahref: 'https://www.zhihu.com/explore',
+                    xlinkhref: '#icon-zhihu',
+                    span: '知乎',
+                    weight: 9996
+                },{
+                    id: 'rm-weibo',
+                    ahref: 'https://www.weibo.com',
+                    xlinkhref: '#icon-weibo',
+                    span: '微博',
+                    weight: 9997
+                },{
+                    id: 'rm-jinjiang',
+                    ahref: 'https://www.jjwxc.net/fenzhan/yq/',
+                    xlinkhref: '#icon-jinjiang',
+                    span: '晋江文学城',
+                    weight: 9998
+                },{
+                    id: 'rm-redbook',
+                    ahref: 'https://www.xiaohongshu.com/',
+                    xlinkhref: '#icon-redbook',
+                    span: '小红书',
+                    weight: 9999
+                }
+            ],
+            dontlike: ['rm-chatgpt','rm-tieba','rm-github','rm-musicca','rm-huya','rm-douyu'],
+            // countdownForText: '<a class="countdownForText" style="font-size:1.2em;font-weight:700;" href="https://love.mew.wang/Web/disguise_Baidu/">野猫停止爱你</a>',
+            // countdownEndTime: '2100-08-01 23:59:59',
+            l2d: { 
+                model: 'https://unpkg.com/live2d-widget-model-haruto@1.0.5/assets/haruto.model.json',
+                position: 'right'
+            },
+            class:'dewu'
+        },
         default:{
             favorite: [
                 {
@@ -128,6 +177,12 @@ $(document).ready(function() {
         if (r != null) return unescape(r[2]); return null; 
     }
     var user = getUrlParam("user") ? getUrlParam("user") : 'default';
+    if(user == 'dewu'){
+        $('.container').children().hide();
+        $('.container').children(':first').show();
+        $('#js-countdown').html('我以为今年我好幸运。很遗憾。两个人的想法不能靠近。<br>那确实我不该那样。<br>回看了以往的记录，或许我和前边你见过的男生都是一样的，你尝试相处了，可是发现不合适了。只是我以为我是不一样的，有点高估了自己。<br>我原来什么都不是。<br>这个分站页面就到这里吧。<br><br>2024.5.20<br>本页面无限期下线中');
+        $('#typeMenu').hide();
+    }
     var userJsonvValue = userJson[user];
     var userfavoriteList = userJsonvValue.favorite;
     var userdontlikeList = userJsonvValue.dontlike;
