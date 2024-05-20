@@ -180,9 +180,20 @@ $(document).ready(function() {
     if(user == 'dewu'){
         $('.container').children().hide();
         $('.container').children(':first').show();
-        $('#js-countdown').html('我以为今年我好幸运。很遗憾。两个人的想法不能靠近。<br>那确实我不该那样。<br>回看了以往的记录，或许我和前边你见过的男生都是一样的，你尝试相处了，可是发现不合适了。只是我以为我是不一样的，有点高估了自己。<br>我原来什么都不是。<br>这个分站页面就到这里吧。<br><br>2024.5.20<br>本页面无限期下线中');
+        $('#js-countdown').html('我以为今年是获得幸福的一年。很遗憾。两个人的想法不能靠近。<br>那确实我不该那样。<br>回看了以往的记录，或许我和前边你见过的男生都是一样的，你尝试相处了，可是发现不合适了。只是我以为我是不一样的，有点高估了自己。<br>我原来什么都不是。<br>这个分站页面就到这里吧。<br><br>2024.5.20<br>本页面无限期下线中');
         $('#typeMenu').hide();
     }
+    $('.main-version__down').on('click', function(){
+        if(getUrlParam("user")){
+                location.href = location.href.replace('index.html?user='+user, 'index.html?user=dewu')
+        } else {
+            if(location.href.indexOf('index.html')>0){
+                location.href = location.href.replace('index.html', 'index.html?user=dewu')
+            }else{
+                location.href = location.href+'index.html?user=dewu';
+            }
+        }
+    })
     var userJsonvValue = userJson[user];
     var userfavoriteList = userJsonvValue.favorite;
     var userdontlikeList = userJsonvValue.dontlike;

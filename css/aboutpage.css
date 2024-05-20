@@ -127,16 +127,12 @@
 
 .markdown-section a {
 	color: var(--theme-color,#42b983);
-	font-weight: 600
+	font-weight: 600;
+	cursor: pointer;
 }
 
 .markdown-section .markdown-default {
 	color: #2c3e50;
-	cursor: pointer;
-}
-
-.markdown-section .markdown-unchecked {
-	cursor: pointer;
 }
 
 .markdown-section h1 {
