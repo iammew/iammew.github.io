@@ -162,7 +162,7 @@ $(document).ready(function() {
             ],
             dontlike: ['rm-kuaishou'],
             countdownForText: '<a class="countdownForText" href="https://www.ruankao.org.cn/">软考</a>',
-            countdownEndTime: '2024-05-25 23:59:59',
+            countdownEndTime: '2024-11-04 23:59:59',
             // countdownStartTime: '2024-09-04 23:59:59',
             l2d: { 
                 model: 'https://unpkg.com/live2d-widget-model-koharu@1.0.5/assets/koharu.model.json',
