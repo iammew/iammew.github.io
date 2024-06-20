@@ -141,12 +141,6 @@ $(document).ready(function() {
                     span: '荔枝微课',
                     weight: -1
                 },{
-                    id: 'rm-outlook',
-                    ahref: 'https://outlook.live.com/mail/',
-                    xlinkhref: '#icon-outlook',
-                    span: 'Outlook',
-                    weight: 9997
-                },{
                     id: 'rm-wangyimail',
                     ahref: 'https://mail.163.com/',
                     xlinkhref: '#icon-wangyi',
@@ -158,6 +152,12 @@ $(document).ready(function() {
                     xlinkhref: '#icon-qqmail',
                     span: 'QQ邮箱',
                     weight: 9999
+                },{
+                    id: 'rm-redbook',
+                    ahref: 'https://www.xiaohongshu.com/',
+                    xlinkhref: '#icon-redbook',
+                    span: '小红书',
+                    weight: 10000
                 }
             ],
             dontlike: ['rm-kuaishou'],
