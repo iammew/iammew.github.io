@@ -131,7 +131,7 @@ $(document).ready(function() {
             //    position: 'right'
             // },
             bg: ['img/bg_joker.png', 'img/bg_joker.png', 'img/bg_joker.png', 'img/bg_joker.png', 'img/bg_joker.png', 'img/bg_joker.png', 'img/bg_joker.png'],
-            pArr: ['同学你身份证和复印件掉了','若是月亮还没来，路灯也可照窗台','庐州月光，梨花微凉'],
+            pArr: ['同学,你的身份证和复印件掉了','若是月亮还没来，路灯也可照窗台','庐州月光，梨花微凉'],
             class:'dewu'
         },
         default:{
