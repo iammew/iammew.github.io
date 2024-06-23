@@ -307,6 +307,7 @@ svg.mobile-d_none, span.pad-d_none{display:inline;}
 @media screen and (max-width:767px){
     .banner-video video{width:960px; }
     .banner-video img{width:960px; }
+    .banner-video img.dewu{width:100%; }
     .s-type-list label{padding:5px 0}
     .search-type{overflow:hidden}
     .search-list{height:30px;overflow-y:hidden;overflow-x:scroll;white-space:nowrap}
