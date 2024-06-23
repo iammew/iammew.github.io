@@ -130,7 +130,8 @@ $(document).ready(function() {
             //    model: 'https://unpkg.com/live2d-widget-model-haruto@1.0.5/assets/haruto.model.json',
             //    position: 'right'
             // },
-            bg: ['img/bg_joker.jpg', 'img/bg_joker.jpg', 'img/bg_joker.jpg', 'img/bg_joker.jpg', 'img/bg_joker.jpg', 'img/bg_joker.jpg', 'img/bg_joker.jpg'],
+            bg: ['img/bg_joker.png', 'img/bg_joker.png', 'img/bg_joker.png', 'img/bg_joker.png', 'img/bg_joker.png', 'img/bg_joker.png', 'img/bg_joker.png'],
+            pArr: ['同学你身份证和复印件掉了','若是月亮还没来，路灯也可照窗台','庐州月光，梨花微凉'],
             class:'dewu'
         },
         default:{
@@ -364,6 +365,9 @@ $(document).ready(function() {
         '你所热爱的，就是你的生活。',  
         'Stay Hungry, Stay Foolish.'
     ];
+    if(userJsonvValue.pArr){
+        pArr = userJsonvValue.pArr;
+    }
     $('#js-lg').text(pArr[Math.floor((Math.random()*pArr.length))]);
     
     //about page
