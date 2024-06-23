@@ -293,6 +293,9 @@ $(document).ready(function() {
         bgArr = userJsonvValue.bg;
     }
     $('#banner-bg').attr('src', bgArr[now.getDay()]);
+    if(userJsonvValue.bg && userJsonvValue.class){
+        $('#banner-bg').addClass(userJsonvValue.class);
+    }
 
     // set class
     if(userJsonvValue.class){
