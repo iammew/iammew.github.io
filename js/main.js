@@ -130,6 +130,7 @@ $(document).ready(function() {
             //    model: 'https://unpkg.com/live2d-widget-model-haruto@1.0.5/assets/haruto.model.json',
             //    position: 'right'
             // },
+            bg: ['img/bg_joker.jpg', 'img/bg_joker.jpg', 'img/bg_joker.jpg', 'img/bg_joker.jpg', 'img/bg_joker.jpg', 'img/bg_joker.jpg', 'img/bg_joker.jpg'],
             class:'dewu'
         },
         default:{
@@ -285,13 +286,12 @@ $(document).ready(function() {
     })
     
     // set background image
-    if(user == 'dewu'){
-        $('#banner-bg').attr('src', 'img/bg_joker.jpg');       
-    } else {
-        var now = new Date();
-        var bgArr = ['img/bg0.jpg', 'img/bg1.jpg', 'img/bg2.jpg', 'img/bg0.jpg', 'img/bg1.jpg', 'img/bg2.jpg', 'img/bg0.jpg'];
-        $('#banner-bg').attr('src', bgArr[now.getDay()]);
+    var now = new Date();
+    var bgArr = ['img/bg0.jpg', 'img/bg1.jpg', 'img/bg2.jpg', 'img/bg0.jpg', 'img/bg1.jpg', 'img/bg2.jpg', 'img/bg0.jpg'];
+    if(userJsonvValue.bg){
+        bgArr = userJsonvValue.bg;
     }
+    $('#banner-bg').attr('src', bgArr[now.getDay()]);
 
     // set class
     if(userJsonvValue.class){
