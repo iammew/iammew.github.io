@@ -162,6 +162,31 @@ $(document).ready(function() {
             pArr: ['疾风吹去芳草地，半两黄土半两金','山水无忧水无愁，年年风雪有尽头','最暖莫过屋中酒，乱语胡言吟然悠','莲花析水，日月轮空','秋风有尽时，明月无绝期','顺也行舟，逆也行舟','三三两两峰前过，独享春风星满楼','天不随我云绸绸，我何随天恨悠悠'],
             class:'jj'
         },
+        hulu:{
+            favorite: [
+                {
+                    id: 'rm-douyu',
+                    ahref: 'https://www.douyu.com/',
+                    xlinkhref: '#icon-douyu',
+                    span: '斗鱼直播',
+                    weight: 9999
+                },{
+                    id: 'rm-huya',
+                    ahref: 'https://www.huya.com/',
+                    xlinkhref: '#icon-huya',
+                    span: '虎牙直播',
+                    weight: 9998
+                }
+            ],
+            dontlike: ['rm-chatgpt','rm-douyin','rm-github','rm-musicca','rm-lizhi'],
+            countdownForText: '<a class="countdownForText" style="font-size:1.2em;font-weight:700;" href="https://love.mew.wang/Web/disguise_Baidu/">葫芦和小裴100天纪念</a>',
+            countdownEndTime: '2024-06-30 23:59:59',
+            // l2d: { 
+            //     model: 'https://unpkg.com/live2d-widget-model-haruto@1.0.5/assets/haruto.model.json',
+            //     position: 'right'
+            // },
+            class:'jj'
+        },
         default:{
             favorite: [
                 {
