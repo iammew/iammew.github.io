@@ -176,9 +176,15 @@ $(document).ready(function() {
                     xlinkhref: '#icon-huya',
                     span: '虎牙直播',
                     weight: 9998
+                },{
+                    id: 'rm-qqmail',
+                    ahref: 'https://mail.qq.com/',
+                    xlinkhref: '#icon-qqmail',
+                    span: 'QQ邮箱',
+                    weight: 9999
                 }
             ],
-            dontlike: ['rm-chatgpt','rm-douyin','rm-github','rm-musicca','rm-lizhi'],
+            dontlike: ['rm-chatgpt','rm-netflix','rm-github','rm-musicca','rm-lizhi'],
             countdownForText: '我们的故事开始2024.3.22（小辛小裴恋爱<a class="countdownForText"></a>天）',
             countdownStartTime: '2024-03-22 00:00:00',
             // l2d: { 
