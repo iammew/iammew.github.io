@@ -130,9 +130,36 @@ $(document).ready(function() {
             //    model: 'https://unpkg.com/live2d-widget-model-haruto@1.0.5/assets/haruto.model.json',
             //    position: 'right'
             // },
+            normalTextWithoutCountDown: '<a style="font-size:1.5em">本页面无限期下线中<br/>2024.05.07</a>',
             bg: ['img/bg_joker.png', 'img/bg_joker.png', 'img/bg_joker.png', 'img/bg_joker.png', 'img/bg_joker.png', 'img/bg_joker.png', 'img/bg_joker.png'],
             pArr: ['同学,你的身份证和复印件掉了','若是月亮还没来，路灯也可照窗台','庐州月光，梨花微凉'],
             class:'dewu'
+        },
+        jj:{
+            favorite: [
+                {
+                    id: 'rm-douyu',
+                    ahref: 'https://www.douyu.com/',
+                    xlinkhref: '#icon-douyu',
+                    span: '斗鱼直播',
+                    weight: 9999
+                },{
+                    id: 'rm-huya',
+                    ahref: 'https://www.huya.com/',
+                    xlinkhref: '#icon-huya',
+                    span: '虎牙直播',
+                    weight: 9998
+                }
+            ],
+            dontlike: ['rm-chatgpt','rm-douyin','rm-github','rm-musicca','rm-lizhi'],
+            // countdownForText: '<a class="countdownForText" style="font-size:1.2em;font-weight:700;" href="https://love.mew.wang/Web/disguise_Baidu/">野猫停止爱你</a>',
+            // countdownEndTime: '2100-08-01 23:59:59',
+            // l2d: { 
+            //     model: 'https://unpkg.com/live2d-widget-model-haruto@1.0.5/assets/haruto.model.json',
+            //     position: 'right'
+            // },
+            normalTextWithoutCountDown: '<a style="font-size:1.5em">唐老鸭的滑翔机</a>',
+            class:'jj'
         },
         default:{
             favorite: [
@@ -182,7 +209,6 @@ $(document).ready(function() {
     if(user == 'dewu'){
         $('.container').children().hide();
         $('.container').children(':first').show();
-        $('#js-countdown').html('<a style="font-size:1.5em">本页面无限期下线中<br>2024.05.07');
         $('#typeMenu').hide();
     }
     $('.main-version__down').on('click', function(){
@@ -355,6 +381,8 @@ $(document).ready(function() {
                 }
             });
         }
+    } else if(userJsonvValue.normalTextWithoutCountDown){
+        $('#js-countdown').html(userJsonvValue.normalTextWithoutCountDown);
     }
     // set words
     var pArr = ['到了熟透的年龄，即使在群众的怀抱中，你都可能觉得寂寞无比。', 
