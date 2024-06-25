@@ -185,7 +185,7 @@ $(document).ready(function() {
             //     model: 'https://unpkg.com/live2d-widget-model-haruto@1.0.5/assets/haruto.model.json',
             //     position: 'right'
             // },
-            class:'jj'
+            class:'hulu'
         },
         default:{
             favorite: [
@@ -222,7 +222,8 @@ $(document).ready(function() {
             l2d: { 
                 model: 'https://unpkg.com/live2d-widget-model-koharu@1.0.5/assets/koharu.model.json',
                 position: 'left'
-            }
+            },
+            class: 'default'
             // ifram: 'https://zjkjxj.org.cn/zjrjks.jhtml'
         }
     };
@@ -351,8 +352,8 @@ $(document).ready(function() {
     }
 
     // set class
-    if(userJsonvValue.class){
-        $('.mode-switch__circle').addClass(userJsonvValue.class);
+    if(userJsonvValue.class && userJsonvValue.class != 'default'){
+        $('.mode-switch__circle').addClass('lover');
         $('.mode-switch__toggle').on('click', function(e){
             location.href = location.href.replace('index.html?user='+user, '')
         })
