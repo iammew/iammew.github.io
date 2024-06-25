@@ -179,13 +179,13 @@ $(document).ready(function() {
                 }
             ],
             dontlike: ['rm-chatgpt','rm-douyin','rm-github','rm-musicca','rm-lizhi'],
-            countdownForText: '<a class="countdownForText" style="font-size:1.2em;font-weight:700;" href="https://love.mew.wang/Web/disguise_Baidu/">葫芦和小裴100天纪念</a>',
-            countdownEndTime: '2024-06-30 23:59:59',
+            countdownForText: '我们的故事开始2024.3.22（小辛小裴恋爱<a class="countdownForText"></a>天）',
+            countdownStartTime: '2024-03-22 00:00:00',
             // l2d: { 
             //     model: 'https://unpkg.com/live2d-widget-model-haruto@1.0.5/assets/haruto.model.json',
             //     position: 'right'
             // },
-            pArr: ['你好，请多指教'],
+            pArr: ['相遇不迟不早 一切都刚刚好'],
             class:'hulu'
         },
         default:{
@@ -382,6 +382,7 @@ $(document).ready(function() {
     if(userJsonvValue.countdownStartTime){
         countdownStartDay = parseInt((new Date(userJsonvValue.countdownStartTime).getTime() - now.getTime()) / (60*60*24*1000));
     }
+    console.log(countdownStartDay);
     var countdownEndDay = parseInt((new Date(userJsonvValue.countdownEndTime).getTime() - now.getTime()) / (60*60*24*1000));
     if (countdownStartDay < 1 && countdownEndDay > 0) {
         $('#js-countdown').html('距离' + userJsonvValue.countdownForText + '还剩 <a style="font-size:1.6em;font-weight:700">'+ countdownEndDay + '</a> 天');
@@ -416,7 +417,10 @@ $(document).ready(function() {
                 }
             });
         }
-    } else if(userJsonvValue.normalTextWithoutCountDown){
+    } else if(countdownStartDay < 0 && userJsonvValue.countdownForText){
+        $('#js-countdown').html(userJsonvValue.countdownForText);
+        $('#js-countdown a.countdownForText').html(0-countdownStartDay);
+    }else if(userJsonvValue.normalTextWithoutCountDown){
         $('#js-countdown').html(userJsonvValue.normalTextWithoutCountDown);
     }
     // set words
