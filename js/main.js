@@ -159,6 +159,7 @@ $(document).ready(function() {
             //     position: 'right'
             // },
             normalTextWithoutCountDown: '<a style="font-size:1.5em">唐老鸭的滑翔机</a>',
+            pArr: ['疾风吹去芳草地，半两黄土半两金','山水无忧水无愁，年年风雪有尽头','最暖莫过屋中酒，乱语胡言吟然悠','莲花析水，日月轮空','秋风有尽时，明月无绝期','顺也行舟，逆也行舟','三三两两峰前过，独享春风星满楼','天不随我云绸绸，我何随天恨悠悠'],
             class:'jj'
         },
         default:{
