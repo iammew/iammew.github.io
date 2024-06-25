@@ -185,6 +185,7 @@ $(document).ready(function() {
             //     model: 'https://unpkg.com/live2d-widget-model-haruto@1.0.5/assets/haruto.model.json',
             //     position: 'right'
             // },
+            pArr: ['你好，请多指教'],
             class:'hulu'
         },
         default:{
