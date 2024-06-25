@@ -223,7 +223,6 @@ $(document).ready(function() {
                 location.href = location.href+'index.html?user='+userforjump;
             }
         }
-        console.log(userforjump+'121312313')
     })
     var userJsonvValue = userJson[user];
     var userfavoriteList = userJsonvValue.favorite;
