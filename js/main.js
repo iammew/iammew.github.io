@@ -226,7 +226,10 @@ $(document).ready(function() {
             },
             class: 'default'
             // ifram: 'https://zjkjxj.org.cn/zjrjks.jhtml'
-        }
+        },
+        4:{
+            copy: 'mylover'
+        },
     };
     function getUrlParam(name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); 
@@ -252,6 +255,9 @@ $(document).ready(function() {
         }
     })
     var userJsonvValue = userJson[user];
+    if(userJsonvValue.copy){
+        userJsonvValue = userJson[userJsonvValue.copy];
+    }
     var userfavoriteList = userJsonvValue.favorite;
     var userdontlikeList = userJsonvValue.dontlike;
     if(userfavoriteList && userfavoriteList.length>0){
