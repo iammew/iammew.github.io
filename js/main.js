@@ -212,16 +212,18 @@ $(document).ready(function() {
         $('.container').children(':first').show();
         $('#typeMenu').hide();
     }
-    $('.main-version__down').on('click', function(){
+    $('.version_user').on('click', function(){
+        var userforjump = $(this).data().user;
         if(getUrlParam("user")){
-                location.href = location.href.replace('index.html?user='+user, 'index.html?user=dewu')
+                location.href = location.href.replace('index.html?user='+user, 'index.html?user='+userforjump)
         } else {
             if(location.href.indexOf('index.html')>0){
-                location.href = location.href.replace('index.html', 'index.html?user=dewu')
+                location.href = location.href.replace('index.html', 'index.html?user='+userforjump)
             }else{
-                location.href = location.href+'index.html?user=dewu';
+                location.href = location.href+'index.html?user='+userforjump;
             }
         }
+        console.log(userforjump+'121312313')
     })
     var userJsonvValue = userJson[user];
     var userfavoriteList = userJsonvValue.favorite;
