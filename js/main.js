@@ -388,7 +388,6 @@ $(document).ready(function() {
     if(userJsonvValue.countdownStartTime){
         countdownStartDay = parseInt((new Date(userJsonvValue.countdownStartTime).getTime() - now.getTime()) / (60*60*24*1000));
     }
-    console.log(countdownStartDay);
     var countdownEndDay = parseInt((new Date(userJsonvValue.countdownEndTime).getTime() - now.getTime()) / (60*60*24*1000));
     if (countdownStartDay < 1 && countdownEndDay > 0) {
         $('#js-countdown').html('距离' + userJsonvValue.countdownForText + '还剩 <a style="font-size:1.6em;font-weight:700">'+ countdownEndDay + '</a> 天');
