@@ -470,9 +470,9 @@ $(document).ready(function() {
                 if(dataHeight){
                     $body.animate({scrollTop: dataHeight}, 500);
                 }
+                $('#live2d-widget').removeClass('d-none');
             });
         });
-        $('#live2d-widget').removeClass('d-none');
     })
     $('#js-markdown_version').on("click", function(){
         $('#main-about').addClass('d-none');
