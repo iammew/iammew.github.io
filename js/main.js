@@ -458,6 +458,7 @@ $(document).ready(function() {
                 $(".close").css('position', 'fixed');
             });
         });
+        $('#live2d-widget').addClass('d-none');
     })
     $(".close").on("click", function(){
         var dataHeight = $(this).data().height;
@@ -471,6 +472,7 @@ $(document).ready(function() {
                 }
             });
         });
+        $('#live2d-widget').removeClass('d-none');
     })
     $('#js-markdown_version').on("click", function(){
         $('#main-about').addClass('d-none');
