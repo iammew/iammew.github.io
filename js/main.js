@@ -82,6 +82,12 @@ $(document).ready(function() {
                     xlinkhref: '#icon-qqmail',
                     span: 'QQ邮箱',
                     weight: 9999
+                },{
+                    id: 'rm-bweather',
+                    ahref: 'https://www.msn.cn/zh-cn/weather/forecast/',
+                    xlinkhref: '#icon-bing',
+                    span: '必应天气',
+                    weight:10000
                 }
             ],
             dontlike: ['rm-kuaishou'],
@@ -198,7 +204,7 @@ $(document).ready(function() {
                     weight: 9999
                 },{
                     id: 'rm-bweather',
-                    ahref: 'https://www.msn.cn/zh-cn/weather/forecast/in-江西省,宜春市',
+                    ahref: 'https://www.msn.cn/zh-cn/weather/forecast/',
                     xlinkhref: '#icon-bing',
                     span: '必应天气',
                     weight:10000
@@ -242,7 +248,7 @@ $(document).ready(function() {
                     weight: 10000
                 },{
                     id: 'rm-bweather',
-                    ahref: 'https://www.msn.cn/zh-cn/weather/forecast/in-浙江省,杭州市',
+                    ahref: 'https://www.msn.cn/zh-cn/weather/forecast/',
                     xlinkhref: '#icon-bing',
                     span: '必应天气',
                     weight:10000
