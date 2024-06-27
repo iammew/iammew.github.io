@@ -280,27 +280,16 @@ $(document).ready(function() {
         $('.container').children(':first').show();
         $('#typeMenu').hide();
     }
-    $('.version_user').on('click', function(){
-        var userforjump = '';
-        var dataUser = $(this).data().user;
-        if(dataUser){
-            userforjump = 'index.html?user='+$(this).data().user;
-        }
-        if(getUrlParam("user")){
-                location.href = location.href.replace('index.html?user='+user, userforjump)
-        } else {
-            if(location.href.indexOf('index.html')>0){
-                location.href = location.href.replace('index.html', userforjump)
-            }else{
-                location.href = location.href+userforjump;
-            }
-        }
-    })
     var userJsonvValue = userJson[user];
     if(userJsonvValue.copy){
         userJsonvValue = userJson[userJsonvValue.copy];
     }
-    var userfavoriteList = userJsonvValue.favorite;
+    var userfavoriteList = [];
+    if(userJsonvValue.favorite){
+        userfavoriteList = userJsonvValue.favorite.sort(function(a, b){
+            return a.weight-b.weight;
+        });
+    }
     var userdontlikeList = userJsonvValue.dontlike;
     if(userfavoriteList && userfavoriteList.length>0){
         $.each(userfavoriteList, function(){

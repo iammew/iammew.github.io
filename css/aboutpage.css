@@ -305,3 +305,21 @@
 .markdown-section output:after,.markdown-section pre:after {
 	content: attr(data-lang)
 }
+.markdown-section .markdown-table__version {
+	td{
+		border: none;
+		background-color: #fff;
+		padding: 0 4px 17px;
+		vertical-align: top;
+  		text-align: left; 
+	}
+	td.version_time {
+		padding-left: 0;
+	}
+	td.version_content{
+		padding-right: 0;
+	}
+	tr {
+		border: none;
+	}
+}
