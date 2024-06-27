@@ -509,11 +509,11 @@ $(document).ready(function() {
             });
         });
     })
-    $('#js-markdown_version').on("click", function(){
+    $('#js-markdown_version').hover(function(){
         $('#main-about').addClass('d-none');
         $('#main-version').removeClass('d-none');
     })
-    $('#js-markdown_about').on("click", function(){
+    $('#js-markdown_about').hover(function(){
         $('#main-about').removeClass('d-none');
         $('#main-version').addClass('d-none');
     })
