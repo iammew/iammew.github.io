@@ -249,14 +249,18 @@ $(document).ready(function() {
         $('#typeMenu').hide();
     }
     $('.version_user').on('click', function(){
-        var userforjump = $(this).data().user;
+        var userforjump = '';
+        var dataUser = $(this).data().user;
+        if(dataUser){
+            userforjump = 'index.html?user='+$(this).data().user;
+        }
         if(getUrlParam("user")){
-                location.href = location.href.replace('index.html?user='+user, 'index.html?user='+userforjump)
+                location.href = location.href.replace('index.html?user='+user, userforjump)
         } else {
             if(location.href.indexOf('index.html')>0){
-                location.href = location.href.replace('index.html', 'index.html?user='+userforjump)
+                location.href = location.href.replace('index.html', userforjump)
             }else{
-                location.href = location.href+'index.html?user='+userforjump;
+                location.href = location.href+userforjump;
             }
         }
     })
