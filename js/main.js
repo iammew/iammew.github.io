@@ -210,7 +210,7 @@ $(document).ready(function() {
                     weight:10000
                 }
             ],
-            dontlike: ['rm-chatgpt','rm-netflix','rm-github','rm-musicca','rm-lizhi'],
+            dontlike: ['rm-chatgpt','rm-github','rm-musicca','rm-lizhi'],
             countdownForText: '我们的故事开始2024.3.22（小辛小裴恋爱<a class="countdownForText"></a>天）',
             countdownStartTime: '2024-03-22 00:00:00',
             // l2d: { 
