@@ -40,7 +40,7 @@
 .markdown-section hr {
 	border: none;
 	border-bottom: 1px solid #eee;
-	margin: 2em 0
+	margin: 2em -13px;
 }
 
 .markdown-section iframe {
@@ -144,7 +144,7 @@
 }
 
 .markdown-section .markdown-title {
-	border-bottom: #42b983 solid 0.2px;
+	border-bottom: #eee solid 1px;
 	padding: 5px 50px 5px 8px;
 	margin-left: -13px;
 	@media screen and (min-width:520px) {
