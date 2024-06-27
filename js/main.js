@@ -39,6 +39,12 @@ $(document).ready(function() {
                     xlinkhref: '#icon-redbook',
                     span: '小红书',
                     weight: 9999
+                },{
+                    id: 'rm-bweather',
+                    ahref: 'https://www.msn.cn/zh-cn/weather/forecast/in-浙江省,杭州市',
+                    xlinkhref: '#icon-bing',
+                    span: '必应天气',
+                    weight:10000
                 }
             ],
             dontlike: ['rm-chatgpt','rm-tieba','rm-github','rm-musicca','rm-huya','rm-douyu'],
@@ -84,6 +90,7 @@ $(document).ready(function() {
             // ifram: 'https://zjkjxj.org.cn/zjrjks.jhtml'
         },
         dewu:{
+            /* 
             favorite: [
                 {
                     id: 'rm-ps',
@@ -124,12 +131,13 @@ $(document).ready(function() {
                 }
             ],
             dontlike: ['rm-chatgpt','rm-tieba','rm-github','rm-musicca','rm-huya','rm-douyu'],
-            // countdownForText: '<a class="countdownForText" style="font-size:1.2em;font-weight:700;" href="https://love.mew.wang/Web/disguise_Baidu/">野猫停止爱你</a>',
-            // countdownEndTime: '2100-08-01 23:59:59',
-            // l2d: { 
-            //    model: 'https://unpkg.com/live2d-widget-model-haruto@1.0.5/assets/haruto.model.json',
-            //    position: 'right'
-            // },
+            countdownForText: '<a class="countdownForText" style="font-size:1.2em;font-weight:700;" href="https://love.mew.wang/Web/disguise_Baidu/">野猫停止爱你</a>',
+            countdownEndTime: '2100-08-01 23:59:59',
+            l2d: { 
+               model: 'https://unpkg.com/live2d-widget-model-haruto@1.0.5/assets/haruto.model.json',
+               position: 'right'
+            },
+            */
             normalTextWithoutCountDown: '<a style="font-size:1.5em">本页面无限期下线中<br/>2024.05.07</a>',
             bg: ['img/bg_joker.png', 'img/bg_joker.png', 'img/bg_joker.png', 'img/bg_joker.png', 'img/bg_joker.png', 'img/bg_joker.png', 'img/bg_joker.png'],
             pArr: ['同学,你的身份证和复印件掉了','若是月亮还没来，路灯也可照窗台','庐州月光，梨花微凉'],
@@ -149,6 +157,12 @@ $(document).ready(function() {
                     xlinkhref: '#icon-huya',
                     span: '虎牙直播',
                     weight: 9998
+                },{
+                    id: 'rm-bweather',
+                    ahref: 'https://www.msn.cn/zh-cn/weather/forecast/in-浙江省,杭州市',
+                    xlinkhref: '#icon-bing',
+                    span: '必应天气',
+                    weight:10000
                 }
             ],
             dontlike: ['rm-chatgpt','rm-douyin','rm-github','rm-musicca','rm-lizhi'],
@@ -182,6 +196,12 @@ $(document).ready(function() {
                     xlinkhref: '#icon-qqmail',
                     span: 'QQ邮箱',
                     weight: 9999
+                },{
+                    id: 'rm-bweather',
+                    ahref: 'https://www.msn.cn/zh-cn/weather/forecast/in-江西省,宜春市',
+                    xlinkhref: '#icon-bing',
+                    span: '必应天气',
+                    weight:10000
                 }
             ],
             dontlike: ['rm-chatgpt','rm-netflix','rm-github','rm-musicca','rm-lizhi'],
@@ -220,6 +240,12 @@ $(document).ready(function() {
                     xlinkhref: '#icon-redbook',
                     span: '小红书',
                     weight: 10000
+                },{
+                    id: 'rm-bweather',
+                    ahref: 'https://www.msn.cn/zh-cn/weather/forecast/in-浙江省,杭州市',
+                    xlinkhref: '#icon-bing',
+                    span: '必应天气',
+                    weight:10000
                 }
             ],
             dontlike: ['rm-kuaishou'],
