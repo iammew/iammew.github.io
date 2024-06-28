@@ -163,16 +163,17 @@
 
 .markdown-section .markdown-title{
 	margin-bottom: 1em;
-	span {
-		border-bottom: #eee solid 1px;
-		padding: 5px 50px 5px 8px;
-		margin-left: -13px;
-		@media screen and (min-width:520px) {
-			padding-right: 188px;
-		}
-	}
 	@media screen and (min-width:520px) {
 		margin-bottom: 0.8em;
+	}
+}
+
+.markdown-section .markdown-titleSpan {
+	border-bottom: #eee solid 1px;
+	padding: 5px 50px 5px 8px;
+	margin-left: -13px;
+	@media screen and (min-width:520px) {
+		padding-right: 188px;
 	}
 }
 
