@@ -398,10 +398,6 @@ svg.mobile-d_none, span.pad-d_none{display:inline;}
 	padding: 2px;
 	border-radius: 100px;
 	cursor: pointer;
-	position: relative;
-	.mode-tooltip__content{
-		display:none;
-	}
 }
 
 .mode-switch__circle {
@@ -426,16 +422,4 @@ svg.mobile-d_none, span.pad-d_none{display:inline;}
 .mode-switch__toggle:hover .mode-switch__circle.lover {
 	/* 70px - 10px(左右padding) - 25px = 35px */
 	transform: translateX(-35px);
-}
-.mode-switch__toggle:hover .mode-tooltip__content {
-	@media (min-width: 640px) { 
-	    display: block;
-	    background-color: #fff;
-	    border-radius: 10px;
-	    position: absolute;
-	}
-	@media (max-width: 640px) { 
-	    display: none !important;
-	    background-color: #fff  !important;
-	}
 }
