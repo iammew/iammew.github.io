@@ -64,33 +64,35 @@
 }
 
 .markdown-section td,.markdown-section th {
-	/* border: 1px solid #ddd; 
-	padding: 6px 13px*/
-	border: none;
+	border: 1px solid #ddd; 
+	padding: 6px 13px
 }
 
 .markdown-section tr {
-	/* border-top: 1px solid #ccc */
-	border: none;
+	border-top: 1px solid #ccc
 }
 
 .markdown-section tr:nth-child(2n) {
-	/* background-color: #f8f8f8 */
-	background-color: #fff;
+	background-color: #f8f8f8
 }
 
-.markdown-section .markdown-table__version {
-	td{
-		padding: 0 4px 17px;
-		vertical-align: top;
-  		text-align: left; 
-	}
-	td.version_time {
-		padding-left: 0;
-	}
-	td.version_content{
-		padding-right: 0;
-	}
+.markdown-section .markdown-table__version td,.markdown-section .markdown-table__version th{
+	padding: 0 10px 17px;
+	vertical-align: top;
+	text-align: left; 
+	border: none;
+}
+
+.markdown-section .markdown-table__version tr{
+	background-color: #fff;
+	border: none;
+}
+
+.markdown-section .markdown-table__version td.version_time {
+	padding-left: 0;
+}
+.markdown-section .markdown-table__version td.version_content{
+	padding-right: 0;
 }
 
 .markdown-section p.tip {
