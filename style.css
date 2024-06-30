@@ -411,15 +411,15 @@ svg.mobile-d_none, span.pad-d_none{display:inline;}
 	pointer-events: none;
 }
 .mode-switch__circle.lover {
-	margin-left:35px;
+	margin-left:31px;
 }
 
 /* 可以暂时使用hover来测试circle这个圆圈的transition效果 */
 .mode-switch__toggle:hover .mode-switch__circle {
-	/* 70px - 10px(左右padding) - 25px = 35px */
-	transform: translateX(35px);
+	/* 60px - 4px(左右padding) - 25px = 31px */
+	transform: translateX(31px);
 }
 .mode-switch__toggle:hover .mode-switch__circle.lover {
-	/* 70px - 10px(左右padding) - 25px = 35px */
-	transform: translateX(-35px);
+	/* 60px - 4px(左右padding) - 25px = 31px */
+	transform: translateX(-31px);
 }
