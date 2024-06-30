@@ -12,7 +12,7 @@ $(document).ready(function() {
         },
         {
             v_time: '2024.05.07',
-            v_content: '移除<a class="version_user" data-user="dewu">得物</a>版本内容，增加<a class="version_user" data-user="dewu">下线内容</a>'
+            v_content: '移除<a class="version-user_down" data-user="dewu">得物</a>版本内容，增加下线内容'
         },
         {
             v_time: '2024.03.05',

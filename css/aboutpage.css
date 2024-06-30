@@ -151,6 +151,12 @@
 	cursor: pointer;
 }
 
+.markdown-section a.version-user_down {
+	color: var(--theme-color,#ccc);
+	font-weight: normal;
+	cursor: unset;
+}
+
 .markdown-section .markdown-default {
 	color: #fff;
 	background-color: #42b983;
