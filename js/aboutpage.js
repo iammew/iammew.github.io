@@ -8,7 +8,7 @@ $(document).ready(function() {
         },
         {
             v_time: '2024.05.21',
-            v_content: '添加了小红书到lover标签下，在关于本站展示页添加版本日志tab'
+            v_content: '转移内容至<a class="version_user" data-user="mylover">用户</a>标签下<br/>在<strong>关于本站</strong>展示页添加<strong>版本日志</strong>tab及内容'
         },
         {
             v_time: '2024.05.07',
@@ -16,7 +16,7 @@ $(document).ready(function() {
         },
         {
             v_time: '2024.03.05',
-            v_content: '添加情书'
+            v_content: '添加Loveletter'
         },
         {
             v_time: '2023.07.19',
