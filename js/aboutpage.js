@@ -3,6 +3,10 @@ $(document).ready(function() {
     var tableTRTemplate = '<tr id="v-time_"><td class="version_time"><strong></strong></td><td class="version_content"></td></tr>'
     var versions = [
         {
+            v_time: '2024.07.04',
+            v_content: '暂停<a class="version_user" data-user="hulu">葫芦</a>与小裴恋爱计天，<strong>站长寄语：期盼两人更好的相遇</strong>'
+        },
+        {
             v_time: '2024.06.25',
             v_content: '增加<a class="version_user" data-user="jj">WJJ</a>和<a class="version_user" data-user="hulu">葫芦</a>版本'
         },

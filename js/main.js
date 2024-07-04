@@ -211,13 +211,14 @@ $(document).ready(function() {
                 }
             ],
             dontlike: ['rm-chatgpt','rm-github','rm-musicca','rm-lizhi'],
-            countdownForText: '我们的故事开始2024.3.22（小辛小裴恋爱<a class="countdownForText"></a>天）',
+            countdownForText: '2024.03.22 --- 2024.07.04（小辛小裴的<a class="countdownForText"></a>天）',
             countdownStartTime: '2024-03-22 00:00:00',
+            countdownEndTime: '2024-07-04 00:00:00',
             // l2d: { 
             //     model: 'https://unpkg.com/live2d-widget-model-haruto@1.0.5/assets/haruto.model.json',
             //     position: 'right'
             // },
-            pArr: ['相遇不迟不早 一切都刚刚好'],
+            pArr: ['有人说，地球是圆的，是因为上帝想让那些走散的人，能够重新相遇。'],
             class:'hulu'
         },
         default:{
@@ -410,11 +411,18 @@ $(document).ready(function() {
     }
     // set countdown
     var countdownStartDay = 0;
+    var countdownSumDay = 0;
     if(userJsonvValue.countdownStartTime){
         countdownStartDay = parseInt((new Date(userJsonvValue.countdownStartTime).getTime() - now.getTime()) / (60*60*24*1000));
     }
     var countdownEndDay = parseInt((new Date(userJsonvValue.countdownEndTime).getTime() - now.getTime()) / (60*60*24*1000));
-    if (countdownStartDay < 1 && countdownEndDay > 0) {
+    if(userJsonvValue.countdownStartTime && userJsonvValue.countdownEndTime){
+        countdownSumDay = parseInt((new Date(userJsonvValue.countdownEndTime).getTime() - now.getTime()) / (60*60*24*1000));
+    }
+    if (countdownSumDay > 0){
+        $('#js-countdown').html(userJsonvValue.countdownForText);
+        $('#js-countdown a.countdownForText').html(countdownSumDay);
+    } else if (countdownStartDay < 1 && countdownEndDay > 0) {
         $('#js-countdown').html('距离' + userJsonvValue.countdownForText + '还剩 <a style="font-size:1.6em;font-weight:700">'+ countdownEndDay + '</a> 天');
 
         if(userJsonvValue.ifram){
