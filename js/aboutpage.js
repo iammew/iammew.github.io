@@ -4,7 +4,7 @@ $(document).ready(function() {
     var versions = [
         {
             v_time: '2024.07.04',
-            v_content: '暂停<a class="version_user" data-user="hulu">葫芦</a>与小裴恋爱计天，<strong>站长寄语：期盼两人更好的相遇</strong>'
+            v_content: '暂停<a class="version_user" data-user="hulu">葫芦</a>与小裴恋爱计天，<strong>站长寄语：期盼更好的相遇</strong>'
         },
         {
             v_time: '2024.06.25',
