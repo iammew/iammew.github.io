@@ -417,7 +417,7 @@ $(document).ready(function() {
     }
     var countdownEndDay = parseInt((new Date(userJsonvValue.countdownEndTime).getTime() - now.getTime()) / (60*60*24*1000));
     if(userJsonvValue.countdownStartTime && userJsonvValue.countdownEndTime){
-        countdownSumDay = parseInt((new Date(userJsonvValue.countdownEndTime).getTime() - now.getTime()) / (60*60*24*1000));
+        countdownSumDay = parseInt((new Date(userJsonvValue.countdownEndTime).getTime() - new Date(userJsonvValue.countdownStartTime).getTime()) / (60*60*24*1000));
     }
     if (countdownSumDay > 0){
         $('#js-countdown').html(userJsonvValue.countdownForText);
