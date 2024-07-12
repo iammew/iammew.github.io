@@ -257,7 +257,7 @@ $(document).ready(function() {
             ],
             dontlike: ['rm-kuaishou'],
             countdownForText: '<a class="countdownForText" href="https://www.ruankao.org.cn/">软考</a>',
-            countdownEndTime: ['YYYY-05-25 23:59:59','YYYY-11-09 23:59:59'],
+            countdownEndTime: ['YYYY-05-24 23:59:59','YYYY-11-08 23:59:59'],
             // countdownStartTime: '2024-09-04 23:59:59',
             l2d: { 
                 model: 'https://unpkg.com/live2d-widget-model-koharu@1.0.5/assets/koharu.model.json',
@@ -281,7 +281,10 @@ $(document).ready(function() {
         $('.container').children(':first').show();
         $('#typeMenu').hide();
     }
-    var userJsonvValue = userJson[user];
+    var userJsonvValue = userJson['default'];
+    if(userJson[user]){
+        userJsonvValue = userJson[user];
+    }
     if(userJsonvValue.copy){
         userJsonvValue = userJson[userJsonvValue.copy];
     }
@@ -415,17 +418,17 @@ $(document).ready(function() {
     if(userJsonvValue.countdownStartTime){
         countdownStartDay = parseInt((new Date(userJsonvValue.countdownStartTime).getTime() - now.getTime()) / (60*60*24*1000));
     }
-    var countdownEndDay = 0;
+    var countdownEndDay = -1;
     if (typeof(userJsonvValue.countdownEndTime) == "string"){
         countdownEndDay = parseInt((new Date(userJsonvValue.countdownEndTime).getTime() - now.getTime()) / (60*60*24*1000));
     } else if(typeof(userJsonvValue.countdownEndTime) == "object") {
         $.each(userJsonvValue.countdownEndTime, function(index, value) {
             var datetempCurrentYear = parseInt((new Date(value.replace('YYYY', now.getFullYear())).getTime() - now.getTime()) / (60*60*24*1000));
             var datetempNextYear = parseInt((new Date(value.replace('YYYY', now.getFullYear()+1)).getTime() - now.getTime()) / (60*60*24*1000));
-            if(countdownEndDay<=0){
+            if(countdownEndDay<0){
                 countdownEndDay = datetempNextYear;
             }
-            if(datetempCurrentYear>0 && datetempCurrentYear<=countdownEndDay){
+            if(datetempCurrentYear>=0 && datetempCurrentYear<=countdownEndDay){
                 countdownEndDay = datetempCurrentYear;
             }
             if(datetempCurrentYear<0 && datetempNextYear<=countdownEndDay){
@@ -439,7 +442,7 @@ $(document).ready(function() {
     if (countdownSumDay > 0){
         $('#js-countdown').html(userJsonvValue.countdownForText);
         $('#js-countdown a.countdownForText').html(countdownSumDay);
-    } else if (countdownStartDay < 1 && countdownEndDay > 0) {
+    } else if (countdownStartDay < 1 && countdownEndDay >= 0) {
         $('#js-countdown').html('距离' + userJsonvValue.countdownForText + '还剩 <a style="font-size:1.6em;font-weight:700">'+ countdownEndDay + '</a> 天');
 
         if(userJsonvValue.ifram){
