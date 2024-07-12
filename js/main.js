@@ -91,8 +91,8 @@ $(document).ready(function() {
                 }
             ],
             dontlike: ['rm-kuaishou'],
-            countdownForText: '<a class="countdownForText" href="https://www.ruankao.org.cn/">软考</a>',
-            countdownEndTime: '2024-11-04 23:59:59'
+            // countdownForText: '<a class="countdownForText" href="https://www.ruankao.org.cn/">软考</a>',
+            // countdownEndTime: '2024-11-04 23:59:59'
             // ifram: 'https://zjkjxj.org.cn/zjrjks.jhtml'
         },
         dewu:{
@@ -257,7 +257,7 @@ $(document).ready(function() {
             ],
             dontlike: ['rm-kuaishou'],
             countdownForText: '<a class="countdownForText" href="https://www.ruankao.org.cn/">软考</a>',
-            countdownEndTime: '2024-11-04 23:59:59',
+            countdownEndTime: ['YYYY-05-25 23:59:59','YYYY-11-09 23:59:59'],
             // countdownStartTime: '2024-09-04 23:59:59',
             l2d: { 
                 model: 'https://unpkg.com/live2d-widget-model-koharu@1.0.5/assets/koharu.model.json',
@@ -415,8 +415,25 @@ $(document).ready(function() {
     if(userJsonvValue.countdownStartTime){
         countdownStartDay = parseInt((new Date(userJsonvValue.countdownStartTime).getTime() - now.getTime()) / (60*60*24*1000));
     }
-    var countdownEndDay = parseInt((new Date(userJsonvValue.countdownEndTime).getTime() - now.getTime()) / (60*60*24*1000));
-    if(userJsonvValue.countdownStartTime && userJsonvValue.countdownEndTime){
+    var countdownEndDay = 0;
+    if (typeof(userJsonvValue.countdownEndTime) == "string"){
+        countdownEndDay = parseInt((new Date(userJsonvValue.countdownEndTime).getTime() - now.getTime()) / (60*60*24*1000));
+    } else if(typeof(userJsonvValue.countdownEndTime) == "object") {
+        $.each(userJsonvValue.countdownEndTime, function(index, value) {
+            var datetempCurrentYear = parseInt((new Date(value.replace('YYYY', now.getFullYear())).getTime() - now.getTime()) / (60*60*24*1000));
+            var datetempNextYear = parseInt((new Date(value.replace('YYYY', now.getFullYear()+1)).getTime() - now.getTime()) / (60*60*24*1000));
+            if(countdownEndDay<=0){
+                countdownEndDay = datetempNextYear;
+            }
+            if(datetempCurrentYear>0 && datetempCurrentYear<=countdownEndDay){
+                countdownEndDay = datetempCurrentYear;
+            }
+            if(datetempCurrentYear<0 && datetempNextYear<=countdownEndDay){
+                countdownEndDay = datetempNextYear;
+            }
+        });
+    }
+    if(userJsonvValue.countdownStartTime && userJsonvValue.countdownEndTime && typeof(userJsonvValue.countdownEndTime) == "string"){
         countdownSumDay = parseInt((new Date(userJsonvValue.countdownEndTime).getTime() - new Date(userJsonvValue.countdownStartTime).getTime()) / (60*60*24*1000));
     }
     if (countdownSumDay > 0){

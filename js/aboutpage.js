@@ -3,6 +3,10 @@ $(document).ready(function() {
     var tableTRTemplate = '<tr id="v-time_"><td class="version_time"><strong></strong></td><td class="version_content"></td></tr>'
     var versions = [
         {
+            v_time: '2024.07.12',
+            v_content: '更新主站，配置多个时间的倒计时 - <strong>取离当前时间最近的一个时间的倒计时</strong><br/>支持数组形式的时间不配置年份，只配置日期的倒计时'
+        },
+        {
             v_time: '2024.07.04',
             v_content: '暂停<a class="version_user" data-user="hulu">葫芦</a>与小裴恋爱计天，<strong>站长寄语：期盼更好的相遇</strong>'
         },
