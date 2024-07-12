@@ -56,7 +56,7 @@ $(document).ready(function() {
             },
             class:'lover'
         },
-        admin:{
+        default:{
             favorite: [
                 {
                     id: 'rm-lizhi',
@@ -221,7 +221,7 @@ $(document).ready(function() {
             pArr: ['有人说，地球是圆的，是因为上帝想让那些走散的人，能够重新相遇。'],
             class:'hulu'
         },
-        default:{
+        admin:{
             favorite: [
                 {
                     id: 'rm-lizhi',
@@ -275,16 +275,23 @@ $(document).ready(function() {
         var r = window.location.search.substr(1).match(reg); 
         if (r != null) return unescape(r[2]); return null; 
     }
-    var user = getUrlParam("user") ? getUrlParam("user") : 'default';
+    var urlUser = getUrlParam("user") ? getUrlParam("user") : "default";
+    if(urlUser=="default"){
+        user = localStorage.getItem('default');
+    }else{
+        localStorage.setItem('default','default');
+        user = getUrlParam("user");
+    }
+    if(!userJson[user]){
+        localStorage.setItem('default','default');
+        user = 'default';
+    }
     if(user == 'dewu'){
         $('.container').children().hide();
         $('.container').children(':first').show();
         $('#typeMenu').hide();
     }
-    var userJsonvValue = userJson['default'];
-    if(userJson[user]){
-        userJsonvValue = userJson[user];
-    }
+    var userJsonvValue = userJson[user];
     if(userJsonvValue.copy){
         userJsonvValue = userJson[userJsonvValue.copy];
     }
@@ -397,14 +404,20 @@ $(document).ready(function() {
     if(userJsonvValue.class && userJsonvValue.class != 'default'){
         $('.mode-switch__circle').addClass('lover');
         $('.mode-switch__toggle').on('click', function(e){
+            e.stopPropagation();
+            localStorage.setItem('default', 'admin');
             location.href = location.href.replace('index.html?user='+user, '')
         })
     } else if(getUrlParam("user")){
         $('.mode-switch__toggle').on('click', function(e){
+            e.stopPropagation();
+            localStorage.setItem('default', 'default');
             location.href = location.href.replace('index.html?user='+user, 'index.html?user=mylover')
         })
     } else {
         $('.mode-switch__toggle').on('click', function(e){
+            e.stopPropagation();
+            localStorage.setItem('default', 'default');
             if(location.href.indexOf('index.html')>0){
                 location.href = location.href.replace('index.html', 'index.html?user=mylover')
             }else{
