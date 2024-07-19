@@ -147,7 +147,8 @@ $(document).ready(function() {
             normalTextWithoutCountDown: '<a style="font-size:1.5em">本页面无限期下线中<br/>2024.05.07</a>',
             bg: ['img/bg_joker.png', 'img/bg_joker.png', 'img/bg_joker.png', 'img/bg_joker.png', 'img/bg_joker.png', 'img/bg_joker.png', 'img/bg_joker.png'],
             pArr: ['同学,你的身份证和复印件掉了','若是月亮还没来，路灯也可照窗台','庐州月光，梨花微凉'],
-            class:'dewu'
+            class:'dewu',
+            off: true
         },
         jj:{
             favorite: [
@@ -276,6 +277,7 @@ $(document).ready(function() {
         if (r != null) return unescape(r[2]); return null; 
     }
     var urlUser = getUrlParam("user") ? getUrlParam("user") : "default";
+    // set default site use admin or default
     if(urlUser=="default"){
         user = localStorage.getItem('default');
     }else{
@@ -286,12 +288,14 @@ $(document).ready(function() {
         localStorage.setItem('default','default');
         user = 'default';
     }
-    if(user == 'dewu'){
+    var userJsonvValue = userJson[user];
+    // site off
+    if(userJsonvValue.off){
         $('.container').children().hide();
         $('.container').children(':first').show();
         $('#typeMenu').hide();
     }
-    var userJsonvValue = userJson[user];
+    // user copy
     if(userJsonvValue.copy){
         userJsonvValue = userJson[userJsonvValue.copy];
     }
