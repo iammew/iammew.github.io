@@ -212,9 +212,9 @@ $(document).ready(function() {
                 }
             ],
             dontlike: ['rm-chatgpt','rm-github','rm-musicca','rm-lizhi'],
-            countdownForText: '2024.03.22 --- 2024.07.04（小辛小裴的<a class="countdownForText"></a>天）',
-            countdownStartTime: '2024-03-22 00:00:00',
-            countdownEndTime: '2024-07-04 00:00:00',
+            // countdownForText: '2024.03.22 --- 2024.07.04（小辛小裴的<a class="countdownForText"></a>天）',
+            // countdownStartTime: '2024-03-22 00:00:00',
+            // countdownEndTime: '2024-07-04 00:00:00',
             // l2d: { 
             //     model: 'https://unpkg.com/live2d-widget-model-haruto@1.0.5/assets/haruto.model.json',
             //     position: 'right'
