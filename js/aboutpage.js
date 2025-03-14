@@ -2,18 +2,18 @@ $(document).ready(function() {
     // <li id="" data-weight="" class="col-3 col-sm-3 col-md-3 col-lg-1 __web-inspector-hide-shortcut__"><a rel="nofollow" href="" target="_blank"><svg class="icon" aria-hidden="true"><use xlink:href=""></use></svg><span></span></a></li>
     var tableTRTemplate = '<tr id="v-time_"><td class="version_time"><strong></strong></td><td class="version_content"></td></tr>'
     var versions = [
-        {
+        /* {
             v_time: '2024.12.24',
             v_content: '按要求移除<a class="version_user" data-user="hulu">葫芦</a>与小裴恋爱计天'
-        },
+        }, */
         {
             v_time: '2024.07.12',
             v_content: '更新主站，配置多个时间的倒计时 - <strong>取离当前时间最近的一个时间的倒计时</strong><br/>支持数组形式的时间不配置年份，只配置日期的倒计时'
         },
-        {
+        /* {
             v_time: '2024.07.04',
             v_content: '按要求暂停<a class="version_user" data-user="hulu">葫芦</a>与小裴恋爱计天'
-        },
+        }, */
         {
             v_time: '2024.06.25',
             v_content: '增加<a class="version_user" data-user="jj">WJJ</a>和<a class="version_user" data-user="hulu">葫芦</a>版本'
@@ -22,7 +22,7 @@ $(document).ready(function() {
             v_time: '2024.05.21',
             v_content: '转移内容至<a class="version_user" data-user="mylover">用户</a>标签下<br/>在<strong>关于本站</strong>展示页添加<strong>版本日志</strong>tab及内容'
         },
-        {
+        /* {
             v_time: '2024.05.07',
             v_content: '移除<a class="version-user_down" data-user="dewu">得物</a>版本内容，增加下线内容'
         },
@@ -33,7 +33,7 @@ $(document).ready(function() {
         {
             v_time: '2023.07.19',
             v_content: '增加<a class="version_user" data-user="dewu">得物</a>版本'
-        },
+        }, */
         {
             v_time: '2022.07.11',
             v_content: '增加了更多书签'
