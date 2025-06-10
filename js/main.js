@@ -88,6 +88,12 @@ $(document).ready(function() {
                     xlinkhref: '#icon-bing',
                     span: '必应天气',
                     weight:10000
+                },{
+                    id: 'rm-mdevice',
+                    ahref: 'https://windows365.microsoft.com/ent#/devices',
+                    xlinkhref: '#icon-micro',
+                    span: '微软设备',
+                    weight:10001
                 }
             ],
             dontlike: ['rm-kuaishou'],
