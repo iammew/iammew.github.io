@@ -96,7 +96,7 @@ $(document).ready(function() {
                     weight:10001
                 }
             ],
-            dontlike: ['rm-kuaishou'],
+            dontlike: ['rm-kuaishou','rm-huya'],
             // countdownForText: '<a class="countdownForText" href="https://www.ruankao.org.cn/">软考</a>',
             // countdownEndTime: '2024-11-04 23:59:59'
             // ifram: 'https://zjkjxj.org.cn/zjrjks.jhtml'
