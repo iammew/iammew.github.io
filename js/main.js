@@ -567,17 +567,18 @@ $(document).ready(function() {
         if(addManuallyURL){
             $('#group_1-1').append(liTemplate.replace('li id="','li id="'+this.id).replace('href="','href="'+addManuallyURL).replace('data-weight="','data-weight="'+0).replace('xlink:href="','xlink:href="'+"#icon-default").replace('<span>','<span>'+addManuallyName));
             var addMauallyURLMap = getaddManuallyURLMap(addManuallyName, addManuallyURL);
-            setCookie("url_addManually", JSON.stringify(Object.fromEntries(addMauallyURLMap)), {
-                expires : -1,
-                path : '/'
-            });
+            // setCookie("url_addManually", JSON.stringify(Object.fromEntries(addMauallyURLMap)), {
+            //     expires : 365,
+            //     path : '/'
+            // });
+            localStorage.setItem("url_addManually", JSON.stringify(Object.fromEntries(addMauallyURLMap)));
         }
     })
     function getaddManuallyURLMap(newKey, newValue) {
         var addMauallyURLMap;
-        var urlAddManuallyCookie = getCookie("url_addManually");
-        if(urlAddManuallyCookie){
-            var jsonObject = JSON.parse(urlAddManuallyCookie);
+        var urlAddManuallyLocalStorage = localStorage.getItem("url_addManually");
+        if(urlAddManuallyLocalStorage){
+            var jsonObject = JSON.parse(urlAddManuallyLocalStorage);
             addMauallyURLMap = new Map(Object.entries(jsonObject));
         } else {
             addMauallyURLMap = new Map();
