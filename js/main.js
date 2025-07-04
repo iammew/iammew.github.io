@@ -279,8 +279,6 @@ $(document).ready(function() {
     };
     var addManuallyURlInit = getaddManuallyURLMap();
     for(let [name,url] of addManuallyURlInit){
-        var urlName = key;
-        var url = value;
         $('#group_1-1').append(liTemplate.replace('li id="','li id="'+this.id).replace('href="','href="'+url).replace('data-weight="','data-weight="'+0).replace('xlink:href="','xlink:href="'+"#icon-default").replace('<span>','<span>'+name));
     }
     function getUrlParam(name) {
