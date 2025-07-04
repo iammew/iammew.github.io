@@ -562,8 +562,8 @@ $(document).ready(function() {
         $('#main-version').addClass('d-none');
     })
     $('#js-shoulu__submit').on('click', function(e){
-        var addManuallyName = $('#js-shouluname__input').value();
-        var addManuallyURL = $('#js-shoulu__input').value();
+        var addManuallyName = $('#js-shouluname__input').val();
+        var addManuallyURL = $('#js-shoulu__input').val();
         if(addManuallyURL){
             $('#group_1-1').append(liTemplate.replace('li id="','li id="'+this.id).replace('href="','href="'+addManuallyURL).replace('data-weight="','data-weight="'+0).replace('xlink:href="','xlink:href="'+"#icon-default").replace('<span>','<span>'+addManuallyName));
             var addMauallyURLMap = getaddManuallyURLMap(addManuallyName, addManuallyURL);
