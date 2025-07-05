@@ -279,7 +279,7 @@ $(document).ready(function() {
     };
     var addManuallyURlInit = getaddManuallyURLMap();
     for(let [name,url] of addManuallyURlInit){
-        $('#group_1-1').append(liTemplate.replace('li id="','li id="'+this.id).replace('href="','href="'+url).replace('data-weight="','data-weight="'+0).replace('xlink:href="','xlink:href="'+"#icon-default").replace('<span>','<span>'+name));
+        $('#group_1-1').append(liTemplate.replace('li id="','li id="rm_shoulu'+encodeURIComponent(name).replaceAll('%','_')).replace('href="','href="'+url).replace('data-weight="','data-weight="'+0).replace('xlink:href="','xlink:href="'+"#icon-default").replace('<span>','<span>'+name));
     }
     function getUrlParam(name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); 
@@ -564,84 +564,31 @@ $(document).ready(function() {
     $('#js-shoulu__submit').on('click', function(e){
         var addManuallyName = $('#js-shouluname__input').val();
         var addManuallyURL = $('#js-shoulu__input').val();
-        if(addManuallyURL){
-            $('#group_1-1').append(liTemplate.replace('li id="','li id="'+this.id).replace('href="','href="'+addManuallyURL).replace('data-weight="','data-weight="'+0).replace('xlink:href="','xlink:href="'+"#icon-default").replace('<span>','<span>'+addManuallyName));
-            var addMauallyURLMap = getaddManuallyURLMap(addManuallyName, addManuallyURL);
-            // setCookie("url_addManually", JSON.stringify(Object.fromEntries(addMauallyURLMap)), {
-            //     expires : 365,
-            //     path : '/'
-            // });
+        if(addManuallyName && addManuallyURL){
+            var addMauallyURLMap = getaddManuallyURLMap();
+            if(isKeyExisted(addManuallyName, addMauallyURLMap)){
+                //TODO - maybe alert
+                $('#group_1-1').find('#rm_shoulu'+ encodeURIComponent(addManuallyName).replaceAll('%','_') + " a").attr('href', addManuallyURL);
+            } else {
+                $('#group_1-1').append(liTemplate.replace('li id="','li id="rm_shoulu'+encodeURIComponent(addManuallyName).replaceAll('%','_')).replace('href="','href="'+addManuallyURL).replace('data-weight="','data-weight="'+0).replace('xlink:href="','xlink:href="'+"#icon-default").replace('<span>','<span>'+addManuallyName));
+            }
+            addMauallyURLMap.set(addManuallyName, addManuallyURL);
             localStorage.setItem("url_addManually", JSON.stringify(Object.fromEntries(addMauallyURLMap)));
+        } else {
+            // alert
         }
     })
-    function getaddManuallyURLMap(newKey, newValue) {
-        var addMauallyURLMap;
+    function isKeyExisted(newKey, oldMap) {
+        if(newKey)
+            return oldMap.has(newKey);
+        return false;
+    }
+    function getaddManuallyURLMap() {
         var urlAddManuallyLocalStorage = localStorage.getItem("url_addManually");
         if(urlAddManuallyLocalStorage){
             var jsonObject = JSON.parse(urlAddManuallyLocalStorage);
-            addMauallyURLMap = new Map(Object.entries(jsonObject));
-        } else {
-            addMauallyURLMap = new Map();
-        }
-        if(newValue){
-            if(addMauallyURLMap.has(newKey)){
-                //TODO - maybe alert
-            } else {
-                addMauallyURLMap.set(newKey, newValue);
-            }
-        }
-        return addMauallyURLMap;
-    }
-    function getCookie(c) {
-        var cookies = document.cookie.split(";");
-        for (var i = 0; i < cookies.length; i++) {
-            var index = cookies[i].indexOf("="),
-            name = cookies[i].substr(0, index);
-            name = name.replace(/^\s+|\s+$/g, "");
-            if (name == c) {
-                return decodeURIComponent(cookies[i].substr(index + 1));
-            }
-        }
-    }
-    function setCookie(cookieName, cookieVal, props) {
-        var createCookie = function createCookie(name, value, props) {
-            if (!props) {
-                props = {};
-            }
-            var exp = props.expires;
-            if (exp) {
-                if (typeof exp == "number") {
-                    var d = new Date();
-                    d.setTime(d.getTime() + exp * 24 * 60 * 60 * 1000);
-                    exp = d;
-                }
-                if (exp.toUTCString) {
-                    props.expires = exp.toUTCString();
-                } else {
-                    props.expires = exp;
-                }
-            }
-            value = encodeURIComponent(value);
-            var propString = name + "=" + value;
-            for (var name in props) {
-                propString += "; " + name;
-                var propValue = props[name];
-                if (propValue !== true) {
-                    propString += "=" + propValue;
-                }
-            }
-            document.cookie = propString;
-        };
-        if (!props) {
-            createCookie(cookieName, cookieVal);
-        } else {
-            var cookieProps = props;
-            for (var propName in cookieProps) {
-                if (!cookieProps[propName]) {
-                    delete cookieProps[propName];
-                }
-            }
-            createCookie(cookieName, cookieVal, cookieProps);
-        }
+            return new Map(Object.entries(jsonObject));
+        } 
+        return new Map();
     }
 })
