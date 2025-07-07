@@ -600,7 +600,7 @@ $(document).ready(function() {
                 '</div>',
             button: [
                 {
-                    value: '同意',
+                    value: '确认',
                     callback: function () {
                         var addManuallyName = $('#js-shouluname__input').val();
                         var addManuallyURL = getValidUrl($('#js-shoulu__input').val());
@@ -618,7 +618,8 @@ $(document).ready(function() {
                             $('#js-shouluUrlTemp').val(addManuallyURL);
                             var addMauallyURLMap = getaddManuallyURLMap();
                             if(isKeyExisted(addManuallyName, addMauallyURLMap)){
-                                this.content('该站点已存在，是否同意替换');
+                                this.title('该站点已存在，确认替换为');
+                                this.content('<div>站点名：<b>'+addManuallyName+ '</b><br/>站点链接：<b>'+addManuallyURL+'</b></div>');
                                 return false;
                             } else {
                                 $('#group_1-1').append(liTemplateForShoulu.replace('li id="','li id="rm_shoulu'+encodeURIComponent(addManuallyName).replaceAll('%','_')).replace('href="','href="'+addManuallyURL).replace('data-weight="','data-weight="'+0).replace('xlink:href="','xlink:href="'+"#icon-mew").replace('<span>','<span>'+addManuallyName));
@@ -677,7 +678,7 @@ $(document).ready(function() {
         $('#js-shoulu__edit').on('click', function(e){
             e.preventDefault();
             var shouluEditDialog = dialog({
-                title: '取消站点收录',
+                title: '编辑收录',
                 content: '<div id="js-popup__context" class="popup-context">'+
                     '<div class="sou-shoulu"><span>收录站点名称：</span>'+
                     '<input id="js-shouluname__input" type="text" value="'+shouluName+'"/></div>'+
@@ -717,7 +718,8 @@ $(document).ready(function() {
                                 $('#js-shouluUrlTemp').val(addManuallyURL);
                                 var addMauallyURLMap = getaddManuallyURLMap();
                                 if(isKeyExisted(shouluName, addMauallyURLMap)||isKeyExisted(addManuallyName, addMauallyURLMap)){
-                                    this.content('是否确认编辑');
+                                    this.title('是否编辑为');
+                                    this.content('<div>站点名：<b>'+addManuallyName+ '</b><br/>站点链接：<b>'+addManuallyURL+'</b></div>');
                                     return false;
                                 }
                             } else {
@@ -741,7 +743,7 @@ $(document).ready(function() {
         $('#js-shoulu__delete').on('click', function(e){
             e.preventDefault();
             var shouluDeleteDialog = dialog({
-                title: '取消站点收录',
+                title: '删除收录',
                 content: '<div id="js-popup__context" class="popup-context">'+
                     '<div class="sou-shoulu"><span>收录站点名称：</span>'+
                     '<input id="js-shouluname__input" type="text" disabled value="'+shouluName+'"/></div>'+
@@ -771,7 +773,8 @@ $(document).ready(function() {
                                 $('#js-shouluUrlTemp').val(addManuallyURL);
                                 var addMauallyURLMap = getaddManuallyURLMap();
                                 if(isKeyExisted(addManuallyName, addMauallyURLMap)){
-                                    this.content('是否确认删除');
+                                    this.title('是否删除');
+                                    this.content('<div>站点名：<b>'+addManuallyName+ '</b><br/>站点链接：<b>'+addManuallyURL+'</b></div>');
                                     return false;
                                 }
                             } else {
