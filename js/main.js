@@ -587,11 +587,6 @@ $(document).ready(function() {
     $('.shoulu-temp').on('click', function(e){
         openShouluDialog(e);
     })
-    $('#group_1-1').on({
-        contextmenu: function(e){
-            openShouluDialog(e)
-        }
-    })
     function openShouluDialog(e){
         e.preventDefault();
         e.stopPropagation();
@@ -672,7 +667,7 @@ $(document).ready(function() {
         if (device.desktop()) {
             d.show(e);
         } else {
-            d.show(document.getElementById(shouluId));
+            d.show(document.getElementById(shouluId).getElementsByTagName('svg')[0]);
         }
         $('#js-shoulu__jump').on('click', function(e){
             e.preventDefault();
