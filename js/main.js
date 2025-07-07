@@ -584,7 +584,17 @@ $(document).ready(function() {
         }
         return url;
     }
-    $('.shoulu-temp').on('click', function(){
+    $('.shoulu-temp').on('click', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        openShouluDialog();
+    })
+    $('#group_1-1').on('contextmenu', function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        openShouluDialog();
+    })
+    function openShouluDialog(){
         var shouluDialog = dialog({
             title: '站点收录',
             content: '<div id="js-popup__context" class="popup-context">'+
@@ -618,6 +628,8 @@ $(document).ready(function() {
                             } else {
                                 $('#group_1-1').append(liTemplateForShoulu.replace('li id="','li id="rm_shoulu'+encodeURIComponent(addManuallyName).replaceAll('%','_')).replace('href="','href="'+addManuallyURL).replace('data-weight="','data-weight="'+0).replace('xlink:href="','xlink:href="'+"#icon-mew").replace('<span>','<span>'+addManuallyName));
                                 $('#rm_shoulu'+encodeURIComponent(addManuallyName).replaceAll('%','_')).on('contextmenu', function(e){
+                                    e.preventDefault();
+                                    e.stopPropagation();
                                     shouluContextMenu($(this), e);
                                 })
                             }
@@ -639,7 +651,7 @@ $(document).ready(function() {
             quickClose: false
         });
         shouluDialog.showModal();
-    })
+    }
     function shouluContextMenu(thisEle, e){
         e.preventDefault();
         var shouluId = thisEle.attr('id');
@@ -682,6 +694,8 @@ $(document).ready(function() {
                                 localStorage.setItem("url_addManually", JSON.stringify(Object.fromEntries(addMauallyURLMap)));
                                 $('#group_1-1').append(liTemplateForShoulu.replace('li id="','li id="rm_shoulu'+encodeURIComponent(addManuallyName).replaceAll('%','_')).replace('href="','href="'+addManuallyURL).replace('data-weight="','data-weight="'+0).replace('xlink:href="','xlink:href="'+"#icon-mew").replace('<span>','<span>'+addManuallyName));
                                 $('#rm_shoulu'+encodeURIComponent(addManuallyName).replaceAll('%','_')).on('contextmenu', function(e){
+                                    e.preventDefault();
+                                    e.stopPropagation();
                                     shouluContextMenu($(this), e);
                                 })
                                 return true;
@@ -769,6 +783,8 @@ $(document).ready(function() {
         return d.destroyed;
     }
     $('.shoulu-temp__list').on('contextmenu', function(e){
+        e.preventDefault();
+        e.stopPropagation();
         shouluContextMenu($(this), e);
     })
 })
