@@ -423,3 +423,28 @@ svg.mobile-d_none, span.pad-d_none{display:inline;}
 	/* 60px - 4px(左右padding) - 25px = 31px */
 	transform: translateX(-31px);
 }
+.cursor-pointer{
+	cursor: pointer;
+}
+.sou-shoulu{
+	margin-bottom: 1.1em;
+	input{
+		font-size:16px;
+		border-radius:5px;
+		background-color:#fff; 
+		border: none; 
+		box-shadow: 0 0.5rem 0.625rem #d4d4d44d;
+		transition: 0.3s all linear;
+	}
+	input:focus{
+		background: #fff; 
+		box-shadow: 0 0px 24px 0 rgba(50, 50, 50, 0.08); 
+		border-color: #fff; 
+	}
+}
+.sou-shoulu__last{
+	margin-bottom: 0;
+}
+.background-dialog{
+	background: #f4f8fb;
+}

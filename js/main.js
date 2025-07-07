@@ -279,7 +279,7 @@ $(document).ready(function() {
     };
     var addManuallyURlInit = getaddManuallyURLMap();
     for(let [name,url] of addManuallyURlInit){
-        $('#group_1-1').append(liTemplate.replace('li id="','li id="rm_shoulu'+encodeURIComponent(name).replaceAll('%','_')).replace('href="','href="'+url).replace('data-weight="','data-weight="'+0).replace('xlink:href="','xlink:href="'+"#icon-default").replace('<span>','<span>'+name));
+        $('#group_1-1').append(liTemplate.replace('li id="','li id="rm_shoulu'+encodeURIComponent(name).replaceAll('%','_')).replace('href="','href="'+url).replace('data-weight="','data-weight="'+0).replace('xlink:href="','xlink:href="'+"#icon-mew").replace('<span>','<span>'+name));
     }
     function getUrlParam(name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); 
@@ -362,7 +362,7 @@ $(document).ready(function() {
                 "display": {"position": userJsonvValue.l2d.position}
             });
     }
-    
+
     $body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');
     var listHeightArr = [];
     $('#showListType li').each(function(){
@@ -561,23 +561,6 @@ $(document).ready(function() {
         $('#main-about').removeClass('d-none');
         $('#main-version').addClass('d-none');
     })
-    $('#js-shoulu__submit').on('click', function(e){
-        var addManuallyName = $('#js-shouluname__input').val();
-        var addManuallyURL = $('#js-shoulu__input').val();
-        if(addManuallyName && addManuallyURL){
-            var addMauallyURLMap = getaddManuallyURLMap();
-            if(isKeyExisted(addManuallyName, addMauallyURLMap)){
-                //TODO - maybe alert
-                $('#group_1-1').find('#rm_shoulu'+ encodeURIComponent(addManuallyName).replaceAll('%','_') + " a").attr('href', addManuallyURL);
-            } else {
-                $('#group_1-1').append(liTemplate.replace('li id="','li id="rm_shoulu'+encodeURIComponent(addManuallyName).replaceAll('%','_')).replace('href="','href="'+addManuallyURL).replace('data-weight="','data-weight="'+0).replace('xlink:href="','xlink:href="'+"#icon-default").replace('<span>','<span>'+addManuallyName));
-            }
-            addMauallyURLMap.set(addManuallyName, addManuallyURL);
-            localStorage.setItem("url_addManually", JSON.stringify(Object.fromEntries(addMauallyURLMap)));
-        } else {
-            // alert
-        }
-    })
     function isKeyExisted(newKey, oldMap) {
         if(newKey)
             return oldMap.has(newKey);
@@ -591,4 +574,54 @@ $(document).ready(function() {
         } 
         return new Map();
     }
+    $('.shoulu-temp').on('click', function(){
+        var shouluDialog = dialog({
+            title: '站点收录',
+            content: '<div id="js-popup__context" class="popup-context">'+
+                '<div class="sou-shoulu"><span>收录站点名称：</span>'+
+                '<input id="js-shouluname__input" type="text"/></div>'+
+                '<div class="sou-shoulu sou-shoulu__last"><span>收录站点链接：</span>'+
+                '<input id="js-shoulu__input" type="text"/></div>'+
+                '</div>',
+            button: [
+                {
+                    value: '同意',
+                    callback: function () {
+                        var addManuallyName = $('#js-shouluname__input').val();
+                        var addManuallyURL = $('#js-shoulu__input').val();
+                        if(typeof addManuallyName == 'undefined'){
+                            addManuallyName = $('#js-shouluNameTemp').val();
+                            addManuallyURL = $('#js-shouluUrlTemp').val();
+                            $('#group_1-1').find('#rm_shoulu'+ encodeURIComponent(addManuallyName).replaceAll('%','_') + " a").attr('href', addManuallyURL);
+                            return true;
+                        }
+                        if(addManuallyName && addManuallyURL){
+                            $('#js-shouluNameTemp').val(addManuallyName);
+                            $('#js-shouluUrlTemp').val(addManuallyURL);
+                            var addMauallyURLMap = getaddManuallyURLMap();
+                            if(isKeyExisted(addManuallyName, addMauallyURLMap)){
+                                this.content('链接已存在，是否同意替换');
+                                return false;
+                            } else {
+                                $('#group_1-1').append(liTemplate.replace('li id="','li id="rm_shoulu'+encodeURIComponent(addManuallyName).replaceAll('%','_')).replace('href="','href="'+addManuallyURL).replace('data-weight="','data-weight="'+0).replace('xlink:href="','xlink:href="'+"#icon-mew").replace('<span>','<span>'+addManuallyName));
+                            }
+                            addMauallyURLMap.set(addManuallyName, addManuallyURL);
+                            localStorage.setItem("url_addManually", JSON.stringify(Object.fromEntries(addMauallyURLMap)));
+                        } else {
+                            return false;
+                        }
+                    },
+                    autofocus: true
+                },
+                {
+                    value: '取消'
+                }
+            ],
+            skin: 'background-dialog',
+            fixed: true,
+            zIndex: 10000
+            //quickClose: true
+        });
+        shouluDialog.showModal();
+    })
 })
