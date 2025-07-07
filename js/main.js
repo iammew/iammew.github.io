@@ -619,7 +619,7 @@ $(document).ready(function() {
                             var addMauallyURLMap = getaddManuallyURLMap();
                             if(isKeyExisted(addManuallyName, addMauallyURLMap)){
                                 this.title('该站点已存在，确认替换为');
-                                this.content('<div>站点名：<b>'+addManuallyName+ '</b><br/>站点链接：<b>'+addManuallyURL+'</b></div>');
+                                this.content('<div>站点名称：<b>'+addManuallyName+ '</b><br/>站点链接：<b>'+addManuallyURL+'</b></div>');
                                 return false;
                             } else {
                                 $('#group_1-1').append(liTemplateForShoulu.replace('li id="','li id="rm_shoulu'+encodeURIComponent(addManuallyName).replaceAll('%','_')).replace('href="','href="'+addManuallyURL).replace('data-weight="','data-weight="'+0).replace('xlink:href="','xlink:href="'+"#icon-mew").replace('<span>','<span>'+addManuallyName));
@@ -719,7 +719,7 @@ $(document).ready(function() {
                                 var addMauallyURLMap = getaddManuallyURLMap();
                                 if(isKeyExisted(shouluName, addMauallyURLMap)||isKeyExisted(addManuallyName, addMauallyURLMap)){
                                     this.title('是否编辑为');
-                                    this.content('<div>站点名：<b>'+addManuallyName+ '</b><br/>站点链接：<b>'+addManuallyURL+'</b></div>');
+                                    this.content('<div>站点名称：<b>'+addManuallyName+ '</b><br/>站点链接：<b>'+addManuallyURL+'</b></div>');
                                     return false;
                                 }
                             } else {
@@ -774,7 +774,7 @@ $(document).ready(function() {
                                 var addMauallyURLMap = getaddManuallyURLMap();
                                 if(isKeyExisted(addManuallyName, addMauallyURLMap)){
                                     this.title('是否删除');
-                                    this.content('<div>站点名：<b>'+addManuallyName+ '</b><br/>站点链接：<b>'+addManuallyURL+'</b></div>');
+                                    this.content('<div>站点名称：<b>'+addManuallyName+ '</b><br/>站点链接：<b>'+addManuallyURL+'</b></div>');
                                     return false;
                                 }
                             } else {
