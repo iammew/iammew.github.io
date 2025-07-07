@@ -575,6 +575,15 @@ $(document).ready(function() {
         } 
         return new Map();
     }
+    function getValidUrl(url) {
+        if(url) {
+            if(url.toLowerCase().startsWith("https://") || url.toLowerCase().startsWith("http://")) {
+                return url;
+            }
+            return "https://"+url;
+        }
+        return url;
+    }
     $('.shoulu-temp').on('click', function(){
         var shouluDialog = dialog({
             title: '站点收录',
@@ -589,10 +598,10 @@ $(document).ready(function() {
                     value: '同意',
                     callback: function () {
                         var addManuallyName = $('#js-shouluname__input').val();
-                        var addManuallyURL = $('#js-shoulu__input').val();
+                        var addManuallyURL = getValidUrl($('#js-shoulu__input').val());
                         if(typeof addManuallyName == 'undefined'){
                             addManuallyName = $('#js-shouluNameTemp').val();
-                            addManuallyURL = $('#js-shouluUrlTemp').val();
+                            addManuallyURL = getValidUrl($('#js-shouluUrlTemp').val());
                             $('#group_1-1').find('#rm_shoulu'+ encodeURIComponent(addManuallyName).replaceAll('%','_') + " a").attr('href', addManuallyURL);
                             var addMauallyURLMap = getaddManuallyURLMap();
                             addMauallyURLMap.set(addManuallyName, addManuallyURL);
@@ -640,7 +649,8 @@ $(document).ready(function() {
         var d = dialog({
             id: 'api-show-dialog',
             quickClose: true,
-            content: '<div id="js-shoulu__edit">编辑</div><div id="js-shoulu__delete">删除</div>'
+            skin: 'shoulu-contextMenu',
+            content: '<div class="shoulu-contextMenu__div" id="js-shoulu__edit">编辑</div><div class="shoulu-contextMenu__div" id="js-shoulu__delete">删除</div>'
         });
         d.show(e);
         $('#js-shoulu__edit').on('click', function(e){
@@ -658,10 +668,10 @@ $(document).ready(function() {
                         value: '编辑',
                         callback: function () {
                             var addManuallyName = $('#js-shouluname__input').val();
-                            var addManuallyURL = $('#js-shoulu__input').val();
+                            var addManuallyURL = getValidUrl($('#js-shoulu__input').val());
                             if(typeof addManuallyName == 'undefined'){
                                 addManuallyName = $('#js-shouluNameTemp').val();
-                                addManuallyURL = $('#js-shouluUrlTemp').val();
+                                addManuallyURL = getValidUrl($('#js-shouluUrlTemp').val());
                                 var rmdontlikeLi = $('#group_1-1').find('#'+shouluId);
                                 if(rmdontlikeLi.length>0){
                                     rmdontlikeLi.remove();
@@ -717,10 +727,10 @@ $(document).ready(function() {
                         value: '删除',
                         callback: function () {
                             var addManuallyName = $('#js-shouluname__input').val();
-                            var addManuallyURL = $('#js-shoulu__input').val();
+                            var addManuallyURL = getValidUrl($('#js-shoulu__input').val());
                             if(typeof addManuallyName == 'undefined'){
                                 addManuallyName = $('#js-shouluNameTemp').val();
-                                addManuallyURL = $('#js-shouluUrlTemp').val();
+                                addManuallyURL = getValidUrl($('#js-shouluUrlTemp').val());
                                 var rmdontlikeLi = $('#group_1-1').find('#rm_shoulu'+ encodeURIComponent(addManuallyName).replaceAll('%','_'))
                                 if(rmdontlikeLi.length>0){
                                     rmdontlikeLi.remove();

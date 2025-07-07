@@ -2,6 +2,10 @@ $(document).ready(function() {
     // <li id="" data-weight="" class="col-3 col-sm-3 col-md-3 col-lg-1 __web-inspector-hide-shortcut__"><a rel="nofollow" href="" target="_blank"><svg class="icon" aria-hidden="true"><use xlink:href=""></use></svg><span></span></a></li>
     var tableTRTemplate = '<tr id="v-time_"><td class="version_time"><strong></strong></td><td class="version_content"></td></tr>'
     var versions = [
+        {
+            v_time: '2025.07.07',
+            v_content: '利用本地缓存添加站点临时收录效果，并且提供右键此类站点来完成编辑或删除功能'
+        },
         /* {
             v_time: '2024.12.24',
             v_content: '按要求移除<a class="version_user" data-user="hulu">葫芦</a>与小裴恋爱计天'

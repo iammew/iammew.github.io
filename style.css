@@ -442,9 +442,15 @@ svg.mobile-d_none, span.pad-d_none{display:inline;}
 		border-color: #fff; 
 	}
 }
-.sou-shoulu__last{
+.sou-shoulu__last {
 	margin-bottom: 0;
 }
-.background-dialog{
+.background-dialog {
 	background: #f4f8fb;
 }
+.shoulu-contextMenu__div {
+	padding: 0.5em 1em;
+	cursor: pointer;
+    border-radius: 5px;
+}
+.shoulu-contextMenu__div:hover{ background-color: #ddd; }
