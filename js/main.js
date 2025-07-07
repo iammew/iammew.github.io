@@ -585,16 +585,16 @@ $(document).ready(function() {
         return url;
     }
     $('.shoulu-temp').on('click', function(e){
+        openShouluDialog(e);
+    })
+    $('#group_1-1').on({
+        contextmenu: function(e){
+            openShouluDialog(e)
+        }
+    })
+    function openShouluDialog(e){
         e.preventDefault();
         e.stopPropagation();
-        openShouluDialog();
-    })
-    $('#group_1-1').on('contextmenu', function(e){
-        e.preventDefault();
-        e.stopPropagation();
-        openShouluDialog();
-    })
-    function openShouluDialog(){
         var shouluDialog = dialog({
             title: '站点收录',
             content: '<div id="js-popup__context" class="popup-context">'+
@@ -627,10 +627,13 @@ $(document).ready(function() {
                                 return false;
                             } else {
                                 $('#group_1-1').append(liTemplateForShoulu.replace('li id="','li id="rm_shoulu'+encodeURIComponent(addManuallyName).replaceAll('%','_')).replace('href="','href="'+addManuallyURL).replace('data-weight="','data-weight="'+0).replace('xlink:href="','xlink:href="'+"#icon-mew").replace('<span>','<span>'+addManuallyName));
-                                $('#rm_shoulu'+encodeURIComponent(addManuallyName).replaceAll('%','_')).on('contextmenu', function(e){
-                                    e.preventDefault();
-                                    e.stopPropagation();
-                                    shouluContextMenu($(this), e);
+                                $('#rm_shoulu'+encodeURIComponent(addManuallyName).replaceAll('%','_')).on({
+                                    touchstart: function(e){
+                                        shouluContextMenu($(this), e);
+                                    },
+                                    contextmenu: function(e){
+                                        shouluContextMenu($(this), e);
+                                    }
                                 })
                             }
                             addMauallyURLMap.set(addManuallyName, addManuallyURL);
@@ -654,6 +657,7 @@ $(document).ready(function() {
     }
     function shouluContextMenu(thisEle, e){
         e.preventDefault();
+        e.stopPropagation();
         var shouluId = thisEle.attr('id');
         var shouluName = thisEle.find('span').text();
         var shouluUrl = thisEle.find('a').attr('href');
@@ -693,10 +697,13 @@ $(document).ready(function() {
                                 addMauallyURLMap.set(addManuallyName, addManuallyURL);
                                 localStorage.setItem("url_addManually", JSON.stringify(Object.fromEntries(addMauallyURLMap)));
                                 $('#group_1-1').append(liTemplateForShoulu.replace('li id="','li id="rm_shoulu'+encodeURIComponent(addManuallyName).replaceAll('%','_')).replace('href="','href="'+addManuallyURL).replace('data-weight="','data-weight="'+0).replace('xlink:href="','xlink:href="'+"#icon-mew").replace('<span>','<span>'+addManuallyName));
-                                $('#rm_shoulu'+encodeURIComponent(addManuallyName).replaceAll('%','_')).on('contextmenu', function(e){
-                                    e.preventDefault();
-                                    e.stopPropagation();
-                                    shouluContextMenu($(this), e);
+                                $('#rm_shoulu'+encodeURIComponent(addManuallyName).replaceAll('%','_')).on({
+                                    touchstart: function(e){
+                                        shouluContextMenu($(this), e);
+                                    },
+                                    contextmenu: function(e){
+                                        shouluContextMenu($(this), e);
+                                    }
                                 })
                                 return true;
                             }
