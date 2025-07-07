@@ -666,9 +666,19 @@ $(document).ready(function() {
             id: 'api-show-dialog',
             quickClose: true,
             skin: 'shoulu-contextMenu',
-            content: '<div class="shoulu-contextMenu__div" id="js-shoulu__edit">编辑</div><div class="shoulu-contextMenu__div" id="js-shoulu__delete">删除</div>'
+            content: device.desktop()?'<div class="shoulu-contextMenu__div" id="js-shoulu__edit">编辑</div><div class="shoulu-contextMenu__div" id="js-shoulu__delete">删除</div>':
+                    '<div class="shoulu-contextMenu__div" id="js-shoulu__jump">跳转</div><div class="shoulu-contextMenu__div" id="js-shoulu__edit">编辑</div><div class="shoulu-contextMenu__div" id="js-shoulu__delete">删除</div>'
         });
-        d.show(e);
+        if (device.desktop()) {
+            d.show(e);
+        } else {
+            d.show(document.getElementById(shouluId));
+        }
+        $('#js-shoulu__jump').on('click', function(e){
+            e.preventDefault();
+            e.stopPropagation();
+            window.open(shouluUrl, '_blank');
+        });
         $('#js-shoulu__edit').on('click', function(e){
             e.preventDefault();
             var shouluEditDialog = dialog({
@@ -789,9 +799,12 @@ $(document).ready(function() {
         });
         return d.destroyed;
     }
-    $('.shoulu-temp__list').on('contextmenu', function(e){
-        e.preventDefault();
-        e.stopPropagation();
-        shouluContextMenu($(this), e);
+    $('.shoulu-temp__list').on({
+        touchstart: function(e){
+            shouluContextMenu($(this), e);
+        },
+        contextmenu: function(e){
+            shouluContextMenu($(this), e);
+        }
     })
 })
