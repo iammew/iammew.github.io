@@ -1,5 +1,6 @@
 $(document).ready(function() {
-    var liTemplate = '<li id="" data-weight="" class="col-3 col-sm-3 col-md-3 col-lg-1 __web-inspector-hide-shortcut__"><a rel="nofollow" href="" target="_blank"><svg class="icon" aria-hidden="true"><use xlink:href=""></use></svg><span></span></a></li>'
+    var liTemplate = '<li id="" data-weight="" class="col-3 col-sm-3 col-md-3 col-lg-1 __web-inspector-hide-shortcut__"><a rel="nofollow" href="" target="_blank"><svg class="icon" aria-hidden="true"><use xlink:href=""></use></svg><span></span></a></li>';
+    var liTemplateForShoulu = '<li id="" data-weight="" class="shoulu-temp__list col-3 col-sm-3 col-md-3 col-lg-1 __web-inspector-hide-shortcut__"><a rel="nofollow" href="" target="_blank"><svg class="icon" aria-hidden="true"><use xlink:href=""></use></svg><span></span></a></li>';
     var userJson = {
         mylover:{
             favorite: [
@@ -279,7 +280,7 @@ $(document).ready(function() {
     };
     var addManuallyURlInit = getaddManuallyURLMap();
     for(let [name,url] of addManuallyURlInit){
-        $('#group_1-1').append(liTemplate.replace('li id="','li id="rm_shoulu'+encodeURIComponent(name).replaceAll('%','_')).replace('href="','href="'+url).replace('data-weight="','data-weight="'+0).replace('xlink:href="','xlink:href="'+"#icon-mew").replace('<span>','<span>'+name));
+        $('#group_1-1').append(liTemplateForShoulu.replace('li id="','li id="rm_shoulu'+encodeURIComponent(name).replaceAll('%','_')).replace('href="','href="'+url).replace('data-weight="','data-weight="'+0).replace('xlink:href="','xlink:href="'+"#icon-mew").replace('<span>','<span>'+name));
     }
     function getUrlParam(name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); 
@@ -593,6 +594,9 @@ $(document).ready(function() {
                             addManuallyName = $('#js-shouluNameTemp').val();
                             addManuallyURL = $('#js-shouluUrlTemp').val();
                             $('#group_1-1').find('#rm_shoulu'+ encodeURIComponent(addManuallyName).replaceAll('%','_') + " a").attr('href', addManuallyURL);
+                            var addMauallyURLMap = getaddManuallyURLMap();
+                            addMauallyURLMap.set(addManuallyName, addManuallyURL);
+                            localStorage.setItem("url_addManually", JSON.stringify(Object.fromEntries(addMauallyURLMap)));
                             return true;
                         }
                         if(addManuallyName && addManuallyURL){
@@ -600,10 +604,13 @@ $(document).ready(function() {
                             $('#js-shouluUrlTemp').val(addManuallyURL);
                             var addMauallyURLMap = getaddManuallyURLMap();
                             if(isKeyExisted(addManuallyName, addMauallyURLMap)){
-                                this.content('链接已存在，是否同意替换');
+                                this.content('该站点已存在，是否同意替换');
                                 return false;
                             } else {
-                                $('#group_1-1').append(liTemplate.replace('li id="','li id="rm_shoulu'+encodeURIComponent(addManuallyName).replaceAll('%','_')).replace('href="','href="'+addManuallyURL).replace('data-weight="','data-weight="'+0).replace('xlink:href="','xlink:href="'+"#icon-mew").replace('<span>','<span>'+addManuallyName));
+                                $('#group_1-1').append(liTemplateForShoulu.replace('li id="','li id="rm_shoulu'+encodeURIComponent(addManuallyName).replaceAll('%','_')).replace('href="','href="'+addManuallyURL).replace('data-weight="','data-weight="'+0).replace('xlink:href="','xlink:href="'+"#icon-mew").replace('<span>','<span>'+addManuallyName));
+                                $('#rm_shoulu'+encodeURIComponent(addManuallyName).replaceAll('%','_')).on('contextmenu', function(e){
+                                    shouluContextMenu($(this), e);
+                                })
                             }
                             addMauallyURLMap.set(addManuallyName, addManuallyURL);
                             localStorage.setItem("url_addManually", JSON.stringify(Object.fromEntries(addMauallyURLMap)));
@@ -619,9 +626,139 @@ $(document).ready(function() {
             ],
             skin: 'background-dialog',
             fixed: true,
-            zIndex: 10000
-            //quickClose: true
+            zIndex: 10000,
+            quickClose: false
         });
         shouluDialog.showModal();
+    })
+    function shouluContextMenu(thisEle, e){
+        e.preventDefault();
+        var shouluId = thisEle.attr('id');
+        var shouluName = thisEle.find('span').text();
+        var shouluUrl = thisEle.find('a').attr('href');
+
+        var d = dialog({
+            id: 'api-show-dialog',
+            quickClose: true,
+            content: '<div id="js-shoulu__edit">编辑</div><div id="js-shoulu__delete">删除</div>'
+        });
+        d.show(e);
+        $('#js-shoulu__edit').on('click', function(e){
+            e.preventDefault();
+            var shouluEditDialog = dialog({
+                title: '取消站点收录',
+                content: '<div id="js-popup__context" class="popup-context">'+
+                    '<div class="sou-shoulu"><span>收录站点名称：</span>'+
+                    '<input id="js-shouluname__input" type="text" value="'+shouluName+'"/></div>'+
+                    '<div class="sou-shoulu sou-shoulu__last"><span>收录站点链接：</span>'+
+                    '<input id="js-shoulu__input" type="text" value="'+shouluUrl+'"/></div>'+
+                    '</div>',
+                button: [
+                    {
+                        value: '编辑',
+                        callback: function () {
+                            var addManuallyName = $('#js-shouluname__input').val();
+                            var addManuallyURL = $('#js-shoulu__input').val();
+                            if(typeof addManuallyName == 'undefined'){
+                                addManuallyName = $('#js-shouluNameTemp').val();
+                                addManuallyURL = $('#js-shouluUrlTemp').val();
+                                var rmdontlikeLi = $('#group_1-1').find('#'+shouluId);
+                                if(rmdontlikeLi.length>0){
+                                    rmdontlikeLi.remove();
+                                }
+                                var addMauallyURLMap = getaddManuallyURLMap();
+                                addMauallyURLMap.delete(shouluName);
+                                addMauallyURLMap.set(addManuallyName, addManuallyURL);
+                                localStorage.setItem("url_addManually", JSON.stringify(Object.fromEntries(addMauallyURLMap)));
+                                $('#group_1-1').append(liTemplateForShoulu.replace('li id="','li id="rm_shoulu'+encodeURIComponent(addManuallyName).replaceAll('%','_')).replace('href="','href="'+addManuallyURL).replace('data-weight="','data-weight="'+0).replace('xlink:href="','xlink:href="'+"#icon-mew").replace('<span>','<span>'+addManuallyName));
+                                $('#rm_shoulu'+encodeURIComponent(addManuallyName).replaceAll('%','_')).on('contextmenu', function(e){
+                                    shouluContextMenu($(this), e);
+                                })
+                                return true;
+                            }
+                            if(addManuallyName && addManuallyURL){
+                                $('#js-shouluNameTemp').val(addManuallyName);
+                                $('#js-shouluUrlTemp').val(addManuallyURL);
+                                var addMauallyURLMap = getaddManuallyURLMap();
+                                if(isKeyExisted(shouluName, addMauallyURLMap)||isKeyExisted(addManuallyName, addMauallyURLMap)){
+                                    this.content('是否确认编辑');
+                                    return false;
+                                }
+                            } else {
+                                return false;
+                            }
+                        },
+                        autofocus: true
+                    },
+                    {
+                        value: '取消'
+                    }
+                ],
+                skin: 'background-dialog',
+                fixed: true,
+                zIndex: 10000,
+                quickClose: false
+            });
+            shouluEditDialog.showModal();
+            d.close().remove();
+        });
+        $('#js-shoulu__delete').on('click', function(e){
+            e.preventDefault();
+            var shouluDeleteDialog = dialog({
+                title: '取消站点收录',
+                content: '<div id="js-popup__context" class="popup-context">'+
+                    '<div class="sou-shoulu"><span>收录站点名称：</span>'+
+                    '<input id="js-shouluname__input" type="text" disabled value="'+shouluName+'"/></div>'+
+                    '<div class="sou-shoulu sou-shoulu__last"><span>收录站点链接：</span>'+
+                    '<input id="js-shoulu__input" type="text" disabled value="'+shouluUrl+'"/></div>'+
+                    '</div>',
+                button: [
+                    {
+                        value: '删除',
+                        callback: function () {
+                            var addManuallyName = $('#js-shouluname__input').val();
+                            var addManuallyURL = $('#js-shoulu__input').val();
+                            if(typeof addManuallyName == 'undefined'){
+                                addManuallyName = $('#js-shouluNameTemp').val();
+                                addManuallyURL = $('#js-shouluUrlTemp').val();
+                                var rmdontlikeLi = $('#group_1-1').find('#rm_shoulu'+ encodeURIComponent(addManuallyName).replaceAll('%','_'))
+                                if(rmdontlikeLi.length>0){
+                                    rmdontlikeLi.remove();
+                                }
+                                var addMauallyURLMap = getaddManuallyURLMap();
+                                addMauallyURLMap.delete(addManuallyName);
+                                localStorage.setItem("url_addManually", JSON.stringify(Object.fromEntries(addMauallyURLMap)));
+                                return true;
+                            }
+                            if(addManuallyName && addManuallyURL){
+                                $('#js-shouluNameTemp').val(addManuallyName);
+                                $('#js-shouluUrlTemp').val(addManuallyURL);
+                                var addMauallyURLMap = getaddManuallyURLMap();
+                                if(isKeyExisted(addManuallyName, addMauallyURLMap)){
+                                    this.content('是否确认删除');
+                                    return false;
+                                }
+                            } else {
+                                return false;
+                            }
+                        },
+                        autofocus: true
+                    },
+                    {
+                        value: '取消'
+                    }
+                ],
+                skin: 'background-dialog',
+                fixed: true,
+                zIndex: 10000,
+                quickClose: false
+            });
+            shouluDeleteDialog.showModal();
+            d.close().remove();
+        });
+        return d.destroyed;
+    }
+    $('.shoulu-temp__list').on('contextmenu', function(e){
+        shouluContextMenu($(this), e);
     })
 })
