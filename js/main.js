@@ -278,10 +278,6 @@ $(document).ready(function() {
             copy: 'mylover'
         },
     };
-    var addManuallyURlInit = getaddManuallyURLMap();
-    for(let [name,url] of addManuallyURlInit){
-        $('#group_1-1').append(liTemplateForShoulu.replace('li id="','li id="rm_shoulu'+encodeURIComponent(name).replaceAll('%','_')).replace('href="','href="'+url).replace('data-weight="','data-weight="'+0).replace('xlink:href="','xlink:href="'+"#icon-mew").replace('<span>','<span>'+name));
-    }
     function getUrlParam(name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); 
         var r = window.location.search.substr(1).match(reg); 
@@ -289,6 +285,7 @@ $(document).ready(function() {
     }
     var urlUser = getUrlParam("user") ? getUrlParam("user") : "default";
     // set default site use admin or default
+    var user = "";
     if(urlUser=="default"){
         user = localStorage.getItem('default');
     }else{
@@ -362,6 +359,11 @@ $(document).ready(function() {
                 "model":{"jsonPath":userJsonvValue.l2d.model},
                 "display": {"position": userJsonvValue.l2d.position}
             });
+    }
+    
+    var addManuallyURlInit = getaddManuallyURLMap();
+    for(let [name,url] of addManuallyURlInit){
+        $('#group_1-1').append(liTemplateForShoulu.replace('li id="','li id="rm_shoulu'+encodeURIComponent(name).replaceAll('%','_')).replace('href="','href="'+url).replace('data-weight="','data-weight="'+0).replace('xlink:href="','xlink:href="'+"#icon-mew").replace('<span>','<span>'+name));
     }
 
     $body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');
@@ -568,7 +570,7 @@ $(document).ready(function() {
         return false;
     }
     function getaddManuallyURLMap() {
-        var urlAddManuallyLocalStorage = localStorage.getItem("url_addManually");
+        var urlAddManuallyLocalStorage = localStorage.getItem("urlAddManually_" + user);
         if(urlAddManuallyLocalStorage){
             var jsonObject = JSON.parse(urlAddManuallyLocalStorage);
             return new Map(Object.entries(jsonObject));
@@ -610,7 +612,7 @@ $(document).ready(function() {
                             $('#group_1-1').find('#rm_shoulu'+ encodeURIComponent(addManuallyName).replaceAll('%','_') + " a").attr('href', addManuallyURL);
                             var addMauallyURLMap = getaddManuallyURLMap();
                             addMauallyURLMap.set(addManuallyName, addManuallyURL);
-                            localStorage.setItem("url_addManually", JSON.stringify(Object.fromEntries(addMauallyURLMap)));
+                            localStorage.setItem("urlAddManually_" + user, JSON.stringify(Object.fromEntries(addMauallyURLMap)));
                             return true;
                         }
                         if(addManuallyName && addManuallyURL){
@@ -633,7 +635,7 @@ $(document).ready(function() {
                                 })
                             }
                             addMauallyURLMap.set(addManuallyName, addManuallyURL);
-                            localStorage.setItem("url_addManually", JSON.stringify(Object.fromEntries(addMauallyURLMap)));
+                            localStorage.setItem("urlAddManually_" + user, JSON.stringify(Object.fromEntries(addMauallyURLMap)));
                         } else {
                             return false;
                         }
@@ -701,7 +703,7 @@ $(document).ready(function() {
                                 var addMauallyURLMap = getaddManuallyURLMap();
                                 addMauallyURLMap.delete(shouluName);
                                 addMauallyURLMap.set(addManuallyName, addManuallyURL);
-                                localStorage.setItem("url_addManually", JSON.stringify(Object.fromEntries(addMauallyURLMap)));
+                                localStorage.setItem("urlAddManually_" + user, JSON.stringify(Object.fromEntries(addMauallyURLMap)));
                                 $('#group_1-1').append(liTemplateForShoulu.replace('li id="','li id="rm_shoulu'+encodeURIComponent(addManuallyName).replaceAll('%','_')).replace('href="','href="'+addManuallyURL).replace('data-weight="','data-weight="'+0).replace('xlink:href="','xlink:href="'+"#icon-mew").replace('<span>','<span>'+addManuallyName));
                                 $('#rm_shoulu'+encodeURIComponent(addManuallyName).replaceAll('%','_')).on({
                                     touchstart: function(e){
@@ -765,7 +767,11 @@ $(document).ready(function() {
                                 }
                                 var addMauallyURLMap = getaddManuallyURLMap();
                                 addMauallyURLMap.delete(addManuallyName);
-                                localStorage.setItem("url_addManually", JSON.stringify(Object.fromEntries(addMauallyURLMap)));
+                                if (addMauallyURLMap.size > 0) {
+                                    localStorage.setItem("urlAddManually_" + user, JSON.stringify(Object.fromEntries(addMauallyURLMap)));
+                                } else {
+                                    localStorage.removeItem("urlAddManually_" + user);
+                                }
                                 return true;
                             }
                             if(addManuallyName && addManuallyURL){
