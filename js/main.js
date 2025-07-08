@@ -570,7 +570,7 @@ $(document).ready(function() {
         return false;
     }
     function getaddManuallyURLMap() {
-        var urlAddManuallyLocalStorage = localStorage.getItem("urlAddManually_" + user);
+        var urlAddManuallyLocalStorage = localStorage.getItem("urlAddManually_" + (user == 'admin' ? 'default' : user));
         if(urlAddManuallyLocalStorage){
             var jsonObject = JSON.parse(urlAddManuallyLocalStorage);
             return new Map(Object.entries(jsonObject));
@@ -612,7 +612,7 @@ $(document).ready(function() {
                             $('#group_1-1').find('#rm_shoulu'+ encodeURIComponent(addManuallyName).replaceAll('%','_') + " a").attr('href', addManuallyURL);
                             var addMauallyURLMap = getaddManuallyURLMap();
                             addMauallyURLMap.set(addManuallyName, addManuallyURL);
-                            localStorage.setItem("urlAddManually_" + user, JSON.stringify(Object.fromEntries(addMauallyURLMap)));
+                            localStorage.setItem("urlAddManually_" + (user == 'admin' ? 'default' : user), JSON.stringify(Object.fromEntries(addMauallyURLMap)));
                             return true;
                         }
                         if(addManuallyName && addManuallyURL){
@@ -635,7 +635,7 @@ $(document).ready(function() {
                                 })
                             }
                             addMauallyURLMap.set(addManuallyName, addManuallyURL);
-                            localStorage.setItem("urlAddManually_" + user, JSON.stringify(Object.fromEntries(addMauallyURLMap)));
+                            localStorage.setItem("urlAddManually_" + (user == 'admin' ? 'default' : user), JSON.stringify(Object.fromEntries(addMauallyURLMap)));
                         } else {
                             return false;
                         }
@@ -703,7 +703,7 @@ $(document).ready(function() {
                                 var addMauallyURLMap = getaddManuallyURLMap();
                                 addMauallyURLMap.delete(shouluName);
                                 addMauallyURLMap.set(addManuallyName, addManuallyURL);
-                                localStorage.setItem("urlAddManually_" + user, JSON.stringify(Object.fromEntries(addMauallyURLMap)));
+                                localStorage.setItem("urlAddManually_" + (user == 'admin' ? 'default' : user), JSON.stringify(Object.fromEntries(addMauallyURLMap)));
                                 $('#group_1-1').append(liTemplateForShoulu.replace('li id="','li id="rm_shoulu'+encodeURIComponent(addManuallyName).replaceAll('%','_')).replace('href="','href="'+addManuallyURL).replace('data-weight="','data-weight="'+0).replace('xlink:href="','xlink:href="'+"#icon-mew").replace('<span>','<span>'+addManuallyName));
                                 $('#rm_shoulu'+encodeURIComponent(addManuallyName).replaceAll('%','_')).on({
                                     touchstart: function(e){
@@ -768,9 +768,9 @@ $(document).ready(function() {
                                 var addMauallyURLMap = getaddManuallyURLMap();
                                 addMauallyURLMap.delete(addManuallyName);
                                 if (addMauallyURLMap.size > 0) {
-                                    localStorage.setItem("urlAddManually_" + user, JSON.stringify(Object.fromEntries(addMauallyURLMap)));
+                                    localStorage.setItem("urlAddManually_" + (user == 'admin' ? 'default' : user), JSON.stringify(Object.fromEntries(addMauallyURLMap)));
                                 } else {
-                                    localStorage.removeItem("urlAddManually_" + user);
+                                    localStorage.removeItem("urlAddManually_" + (user == 'admin' ? 'default' : user));
                                 }
                                 return true;
                             }
