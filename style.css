@@ -5,14 +5,18 @@ body.darkmode--activated{
 	.search-type input:checked+label,.search-type input:hover+label { background-color:#282828; }
 	#search-text { background: #282828; box-shadow: 0 0.5rem 0.625rem #121212;}
 	#search-text:focus{ background: #282828; box-shadow: 0 0px 24px 0 rgba(50, 50, 50, 0.08); border-color: #121212; }
-	#search-text { color: #fff; }
-	#search-text::-webkit-input-placeholder { color: #fff; }
+	#search-text { color: #888; }
+	#search-text::-webkit-input-placeholder { color: #888; }
 	.mylist { background: #282828; box-shadow: 0 0.5rem 0.625rem #121212; }
 	.mylist li.col-3 svg { background: #282828;border: 1px solid #121212; }
 	.mylist li.col-3:hover { background: #121212; }
 	.mylist li.col-3 span { color: #fff; }
 	.mylist li a { color: #fff; display: block; cursor: pointer; }
 	.mylist li.title { border-bottom: 1px solid #121212; }
+	.mylist li { color: #ddd; }
+	#word{ background: rgba(28, 28, 28, 0.8); }
+	#word li{ color:#ddd; }
+	#word li:hover{ background-color: #282828;}
 }
 d-none{
 	display: none;
