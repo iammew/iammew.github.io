@@ -811,4 +811,20 @@ $(document).ready(function() {
             shouluContextMenu($(this), e);
         }
     })
+
+    const darkOption ={
+        bottom: '32px',
+        right: '32px',
+        time: '0.3s',
+        mixColor: '#fff',
+        backgroundColor: '#fff',
+        buttonColorDark: '#121212',
+        buttonColorLight: '#fff',
+        saveInCookies: true,
+        label: '🌓',
+        autoMatchOsTheme: true
+    }
+
+    const darkmode = new Darkmode(darkOption);
+    darkmode.showWidget();
 })

@@ -1,4 +1,19 @@
 body{ font-size: 14px; background: #f4f8fb; overflow-x:hidden;  }
+body.darkmode--activated{
+	.banner-video img { display: none; }
+	.search-type li { border-color:#0D0D0D;background: rgb(118 118 118 / 0.7); }
+	.search-type input:checked+label,.search-type input:hover+label { background-color:#282828; }
+	#search-text { background: #282828; box-shadow: 0 0.5rem 0.625rem #121212;}
+	#search-text:focus{ background: #282828; box-shadow: 0 0px 24px 0 rgba(50, 50, 50, 0.08); border-color: #121212; }
+	#search-text { color: #fff; }
+	#search-text::-webkit-input-placeholder { color: #fff; }
+	.mylist { background: #282828; box-shadow: 0 0.5rem 0.625rem #121212; }
+	.mylist li.col-3 svg { background: #282828;border: 1px solid #121212; }
+	.mylist li.col-3:hover { background: #121212; }
+	.mylist li.col-3 span { color: #fff; }
+	.mylist li a { color: #fff; display: block; cursor: pointer; }
+	.mylist li.title { border-bottom: 1px solid #121212; }
+}
 d-none{
 	display: none;
 }
