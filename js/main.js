@@ -534,7 +534,6 @@ $(document).ready(function() {
         $body.animate({scrollTop: 0}, 0, "swing", function(){
             $(".pop").slideDown(500, "swing", function(){
                 $("#nav-page").hide();
-                $('body').css('background-color','white');
                 $('.close').attr('data-height', clickEleHeight);
                 $('.close').data().height = clickEleHeight;
                 $(".close").css('position', 'fixed');
@@ -820,7 +819,7 @@ $(document).ready(function() {
         backgroundColor: '#fff',
         buttonColorDark: '#121212',
         buttonColorLight: '#fff',
-        saveInCookies: true,
+        saveInCookies: false,
         label: '🌓',
         autoMatchOsTheme: true
     }

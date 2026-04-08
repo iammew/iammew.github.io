@@ -1,4 +1,9 @@
-body{ font-size: 14px; background: #f4f8fb; overflow-x:hidden;  }
+body{ 
+	font-size: 14px; background: #f4f8fb; overflow-x:hidden; 
+	.darkmode-toggle {
+		z-index:99999;
+	}
+}
 body.darkmode--activated{
 	.banner-video img { display: none; }
 	.search-type li { border-color:#0D0D0D;background: rgb(118 118 118 / 0.7); }
@@ -17,6 +22,14 @@ body.darkmode--activated{
 	#word{ background: rgba(28, 28, 28, 0.8); }
 	#word li{ color:#ddd; }
 	#word li:hover{ background-color: #282828;}
+	.content-area, .pop { background-color: #121212;}
+	.markdown-section hr, .markdown-section .markdown-titleSpan {
+		border-bottom: 1px solid #282828;
+	}
+	.markdown-section .markdown-table__version tr {
+		background-color: #121212;
+		border: none;
+	}
 }
 d-none{
 	display: none;
