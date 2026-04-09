@@ -4,6 +4,11 @@ body{
 		z-index:99999;
 	}
 }
+body.notDesktop{
+	.darkmode-layer, .darkmode-toggle {
+		display:none;
+	}
+}
 body.darkmode--activated{
 	.banner-video img { display: none; }
 	.search-type li { border-color:#0D0D0D;background: rgb(118 118 118 / 0.7); }

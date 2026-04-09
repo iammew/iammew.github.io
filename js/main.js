@@ -367,6 +367,11 @@ $(document).ready(function() {
     }
 
     $body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');
+    if (device.desktop()) {
+        $body.addClass("desktop");
+    } else {
+        $body.addClass("notDesktop");
+    }
     var listHeightArr = [];
     $('#showListType li').each(function(){
         listHeightArr.push($('#'+$(this).data().id).offset().top);
