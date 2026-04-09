@@ -1,6 +1,6 @@
 $(document).ready(function() {
     var liTemplate = '<li id="" data-weight="" class="col-3 col-sm-3 col-md-3 col-lg-1 __web-inspector-hide-shortcut__"><a rel="nofollow" href="" target="_blank"><svg class="icon" aria-hidden="true"><use xlink:href=""></use></svg><span></span></a></li>';
-    var liTemplateForShoulu = '<li id="" data-weight="" class="shoulu-temp__list col-3 col-sm-3 col-md-3 col-lg-1 __web-inspector-hide-shortcut__"><a rel="nofollow" href="" target="_blank"><svg class="icon" aria-hidden="true"><use xlink:href=""></use></svg><span></span></a></li>';
+    var liTemplateForShoulu = '<li id="" data-weight="" class="shoulu-temp__list col-3 col-sm-3 col-md-3 col-lg-1 __web-inspector-hide-shortcut__"><div class="shoulu-temp__btn">+</div><a rel="nofollow" href="" target="_blank"><svg class="icon" aria-hidden="true"><use xlink:href=""></use></svg><span></span></a></li>';
     var userJson = {
         mylover:{
             favorite: [
@@ -363,7 +363,7 @@ $(document).ready(function() {
     
     var addManuallyURlInit = getaddManuallyURLMap();
     for(let [name,url] of addManuallyURlInit){
-        $('#group_1-1').append(liTemplateForShoulu.replace('li id="','li id="rm_shoulu'+encodeURIComponent(name).replaceAll('%','_')).replace('href="','href="'+url).replace('data-weight="','data-weight="'+0).replace('xlink:href="','xlink:href="'+"#icon-mew").replace('<span>','<span>'+name));
+        $(liTemplateForShoulu.replace('li id="','li id="rm_shoulu'+encodeURIComponent(name).replaceAll('%','_')).replace('href="','href="'+url).replace('data-weight="','data-weight="'+0).replace('xlink:href="','xlink:href="'+"#icon-mew").replace('<span>','<span>'+name)).insertBefore('#js_li-add');
     }
 
     $body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body');
@@ -613,7 +613,7 @@ $(document).ready(function() {
                         if(typeof addManuallyName == 'undefined'){
                             addManuallyName = $('#js-shouluNameTemp').val();
                             addManuallyURL = getValidUrl($('#js-shouluUrlTemp').val());
-                            $('#group_1-1').find('#rm_shoulu'+ encodeURIComponent(addManuallyName).replaceAll('%','_') + " a").attr('href', addManuallyURL);
+                            $('#group_0').find('#rm_shoulu'+ encodeURIComponent(addManuallyName).replaceAll('%','_') + " a").attr('href', addManuallyURL);
                             var addMauallyURLMap = getaddManuallyURLMap();
                             addMauallyURLMap.set(addManuallyName, addManuallyURL);
                             localStorage.setItem("urlAddManually_" + (user == 'admin' ? 'default' : user), JSON.stringify(Object.fromEntries(addMauallyURLMap)));
@@ -628,12 +628,12 @@ $(document).ready(function() {
                                 this.content('<div>站点名称：<b>'+addManuallyName+ '</b><br/>站点链接：<b>'+addManuallyURL+'</b></div>');
                                 return false;
                             } else {
-                                $('#group_1-1').append(liTemplateForShoulu.replace('li id="','li id="rm_shoulu'+encodeURIComponent(addManuallyName).replaceAll('%','_')).replace('href="','href="'+addManuallyURL).replace('data-weight="','data-weight="'+0).replace('xlink:href="','xlink:href="'+"#icon-mew").replace('<span>','<span>'+addManuallyName));
-                                $('#rm_shoulu'+encodeURIComponent(addManuallyName).replaceAll('%','_')).on({
+                                $(liTemplateForShoulu.replace('li id="','li id="rm_shoulu'+encodeURIComponent(addManuallyName).replaceAll('%','_')).replace('href="','href="'+addManuallyURL).replace('data-weight="','data-weight="'+0).replace('xlink:href="','xlink:href="'+"#icon-mew").replace('<span>','<span>'+addManuallyName)).insertBefore('#js_li-add');
+                                $('#rm_shoulu'+encodeURIComponent(addManuallyName).replaceAll('%','_')+' .shoulu-temp__btn').on({
                                     touchstart: function(e){
                                         shouluContextMenu($(this), e);
                                     },
-                                    contextmenu: function(e){
+                                    click: function(e){
                                         shouluContextMenu($(this), e);
                                     }
                                 })
@@ -660,9 +660,10 @@ $(document).ready(function() {
     function shouluContextMenu(thisEle, e){
         e.preventDefault();
         e.stopPropagation();
-        var shouluId = thisEle.attr('id');
-        var shouluName = thisEle.find('span').text();
-        var shouluUrl = thisEle.find('a').attr('href');
+        var shouluId = thisEle.parent().attr('id');
+        var shouluName = thisEle.parent().find('span').text();
+        var shouluUrl = thisEle.parent().find('a').attr('href');
+        console.log("12213213");
 
         var d = dialog({
             id: 'api-show-dialog',
@@ -700,7 +701,7 @@ $(document).ready(function() {
                             if(typeof addManuallyName == 'undefined'){
                                 addManuallyName = $('#js-shouluNameTemp').val();
                                 addManuallyURL = getValidUrl($('#js-shouluUrlTemp').val());
-                                var rmdontlikeLi = $('#group_1-1').find('#'+shouluId);
+                                var rmdontlikeLi = $('#group_0').find('#'+shouluId);
                                 if(rmdontlikeLi.length>0){
                                     rmdontlikeLi.remove();
                                 }
@@ -708,12 +709,12 @@ $(document).ready(function() {
                                 addMauallyURLMap.delete(shouluName);
                                 addMauallyURLMap.set(addManuallyName, addManuallyURL);
                                 localStorage.setItem("urlAddManually_" + (user == 'admin' ? 'default' : user), JSON.stringify(Object.fromEntries(addMauallyURLMap)));
-                                $('#group_1-1').append(liTemplateForShoulu.replace('li id="','li id="rm_shoulu'+encodeURIComponent(addManuallyName).replaceAll('%','_')).replace('href="','href="'+addManuallyURL).replace('data-weight="','data-weight="'+0).replace('xlink:href="','xlink:href="'+"#icon-mew").replace('<span>','<span>'+addManuallyName));
-                                $('#rm_shoulu'+encodeURIComponent(addManuallyName).replaceAll('%','_')).on({
+                                $(liTemplateForShoulu.replace('li id="','li id="rm_shoulu'+encodeURIComponent(addManuallyName).replaceAll('%','_')).replace('href="','href="'+addManuallyURL).replace('data-weight="','data-weight="'+0).replace('xlink:href="','xlink:href="'+"#icon-mew").replace('<span>','<span>'+addManuallyName)).insertBefore('#js_li-add');
+                                $('#rm_shoulu'+encodeURIComponent(addManuallyName).replaceAll('%','_')+' .shoulu-temp__btn').on({
                                     touchstart: function(e){
                                         shouluContextMenu($(this), e);
                                     },
-                                    contextmenu: function(e){
+                                    click: function(e){
                                         shouluContextMenu($(this), e);
                                     }
                                 })
@@ -765,7 +766,7 @@ $(document).ready(function() {
                             if(typeof addManuallyName == 'undefined'){
                                 addManuallyName = $('#js-shouluNameTemp').val();
                                 addManuallyURL = getValidUrl($('#js-shouluUrlTemp').val());
-                                var rmdontlikeLi = $('#group_1-1').find('#rm_shoulu'+ encodeURIComponent(addManuallyName).replaceAll('%','_'))
+                                var rmdontlikeLi = $('#group_0').find('#rm_shoulu'+ encodeURIComponent(addManuallyName).replaceAll('%','_'))
                                 if(rmdontlikeLi.length>0){
                                     rmdontlikeLi.remove();
                                 }
@@ -807,11 +808,11 @@ $(document).ready(function() {
         });
         return d.destroyed;
     }
-    $('.shoulu-temp__list').on({
+    $('.shoulu-temp__btn').on({
         touchstart: function(e){
             shouluContextMenu($(this), e);
         },
-        contextmenu: function(e){
+        click: function(e){
             shouluContextMenu($(this), e);
         }
     })

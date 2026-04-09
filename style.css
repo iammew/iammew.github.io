@@ -28,12 +28,18 @@ body.darkmode--activated{
 	#word li{ color:#ddd; }
 	#word li:hover{ background-color: #282828;}
 	.content-area, .pop { background-color: #121212;}
-	.markdown-section hr, .markdown-section .markdown-titleSpan {
-		border-bottom: 1px solid #282828;
-	}
-	.markdown-section .markdown-table__version tr {
-		background-color: #121212;
-		border: none;
+	.markdown-section hr, .markdown-section .markdown-titleSpan { border-bottom: 1px solid #282828; }
+	.markdown-section .markdown-table__version tr { background-color: #121212; border: none; }
+	.shoulu-temp__list .shoulu-temp__btn { color: #bbb; }
+	.shoulu-contextMenu__div { color: #ddd; }
+	.shoulu-contextMenu__div:hover{ background-color: #121212; }
+	.ui-dialog-header{ border-color: #121212; }
+	.background-dialog, .shoulu-contextMenu{
+		background: #282828;
+		border-color: #121212;
+		color: #bbb;
+		input { background-color:#282828; color: #888; }
+		input:checked+label, input:hover+label { background-color:#121212; }
 	}
 }
 d-none{
@@ -491,3 +497,26 @@ svg.mobile-d_none, span.pad-d_none{display:inline;}
     border-radius: 5px;
 }
 .shoulu-contextMenu__div:hover{ background-color: #ddd; }
+
+.add-btn {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 14px 8px;
+  text-align: center;
+  color: var(--sub);
+  font-size: 22px;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+}
+.shoulu-temp__list .shoulu-temp__btn {
+  position: absolute;
+  top: 0.125em;
+  right: 0.5em;
+  font-size: 18px;
+  color: #121212;
+  cursor: pointer;
+  display: none;
+}
+.shoulu-temp__list:hover .shoulu-temp__btn {
+  display: block;
+}

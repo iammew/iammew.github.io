@@ -1,3 +1,6 @@
+body.darkmode--activated{
+	.close { color:#fff; }
+}
 .pop{
     height: 100%;
     width: 100%;

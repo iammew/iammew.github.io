@@ -3,6 +3,10 @@ $(document).ready(function() {
     var tableTRTemplate = '<tr id="v-time_"><td class="version_time"><strong></strong></td><td class="version_content"></td></tr>'
     var versions = [
         {
+            v_time: '2026.04.08',
+            v_content: '添加暗黑模式，并相关适配'
+        },
+        {
             v_time: '2025.07.07',
             v_content: '利用本地缓存添加站点临时收录效果，并且提供右键此类站点来完成编辑或删除功能'
         },
