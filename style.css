@@ -8,6 +8,9 @@ body.notDesktop{
 	.darkmode-layer, .darkmode-toggle {
 		display:none;
 	}
+	.shoulu-temp__list .shoulu-temp__btn {
+		display: block;
+	}
 }
 body.darkmode--activated{
 	.banner-video img { display: none; }
