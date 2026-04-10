@@ -831,5 +831,5 @@ $(document).ready(function() {
     }
 
     const darkmode = new Darkmode(darkOption);
-    darkmode.showWidget();
+    device.desktop() ? darkmode.showWidget() : '';
 })

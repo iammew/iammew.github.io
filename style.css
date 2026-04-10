@@ -4,10 +4,7 @@ body{
 		z-index:99999;
 	}
 }
-body.notDesktop{
-	.darkmode-layer, .darkmode-toggle {
-		display:none;
-	}
+body.desktop{
 	.shoulu-temp__list .shoulu-temp__btn {
 		display: block;
 	}
