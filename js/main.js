@@ -661,8 +661,8 @@ $(document).ready(function() {
         e.preventDefault();
         e.stopPropagation();
         var shouluId = thisEle.parent().attr('id');
-        var shouluName = thisEle.parent().find('span').text();
-        var shouluUrl = thisEle.parent().find('a').attr('href');
+        var shouluName = thisEle.next().find('span').text();
+        var shouluUrl = thisEle.next().attr('href');
         console.log("12213213");
 
         var d = dialog({
