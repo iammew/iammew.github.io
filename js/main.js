@@ -1,6 +1,6 @@
 $(document).ready(function() {
     var liTemplate = '<li id="" data-weight="" class="col-3 col-sm-3 col-md-3 col-lg-1 __web-inspector-hide-shortcut__"><a rel="nofollow" href="" target="_blank"><svg class="icon" aria-hidden="true"><use xlink:href=""></use></svg><span></span></a></li>';
-    var liTemplateForShoulu = '<li id="" data-weight="" class="shoulu-temp__list col-3 col-sm-3 col-md-3 col-lg-1 __web-inspector-hide-shortcut__"><div class="shoulu-temp__btn">+</div><a rel="nofollow" href="" target="_blank"><svg class="icon" aria-hidden="true"><use xlink:href=""></use></svg><span></span></a></li>';
+    var liTemplateForShoulu = '<li id="" data-weight="" class="shoulu-temp__list col-3 col-sm-3 col-md-3 col-lg-1 __web-inspector-hide-shortcut__"><div class="shoulu-temp__btn"><a>&#8801;</a></div><a rel="nofollow" href="" target="_blank"><svg class="icon" aria-hidden="true"><use xlink:href=""></use></svg><span></span></a></li>';
     var userJson = {
         mylover:{
             favorite: [
